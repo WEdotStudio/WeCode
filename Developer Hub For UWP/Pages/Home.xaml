@@ -11,7 +11,7 @@
         <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Image Source="/Assets/ninja.png" Height="150" HorizontalAlignment="Center"/>
             <TextBlock x:Uid="welcome" Text="Hello, developer." FontSize="40" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,20"/>
-            <TextBlock x:Uid="welcome_d"  Text="You are curently using" HorizontalAlignment="Center"   FontSize="25%" Foreground="White" />
+            <TextBlock x:Uid="welcome_device"  Text="You are curently using" HorizontalAlignment="Center"   FontSize="25%" Foreground="White" />
             <TextBlock HorizontalAlignment="Center"   FontSize="20%" Foreground="White" >
             <Run Text="WIndows 10 Build"/>
             <Run x:Name="bu" Text=" 14354"/>
