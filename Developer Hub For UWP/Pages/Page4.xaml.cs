@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using Windows.Data.Json;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.Web.Http;
 using static Developer_Hub_For_UWP.Presentation.insideten;
@@ -32,6 +30,8 @@ namespace Developer_Hub_For_UWP.Pages
 
             var jsonString = await response.Content.ReadAsStringAsync();
             RootObject data = JsonConvert.DeserializeObject<RootObject>(jsonString);
+
+            Build_v.Text = data.@internal.build;
 
             pcwrp_b.Text = data.pcwrp.build;
             pcwrp_v.Text = data.pcwrp.version;
