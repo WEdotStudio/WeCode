@@ -19,6 +19,9 @@ namespace Developer_Hub_For_UWP.Pages
         {
             this.InitializeComponent();
 
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            title.Text = loader.GetString("LBI");
+
             UpdateData();
         }
 
