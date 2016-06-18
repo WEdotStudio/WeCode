@@ -211,7 +211,7 @@
   </data>
   <data name="ErrCho" xml:space="preserve">
     <value>您未选择或只选了一个图标</value>
-    <comment>You haven&apos;t chosen a file or choose have only chosen one file.</comment>
+    <comment>You haven't chosen a file or choose have only chosen one file.</comment>
   </data>
   <data name="Fb.Content" xml:space="preserve">
     <value>反馈</value>
@@ -426,5 +426,4 @@
   <data name="wrp.Text" xml:space="preserve">
     <value>发行预览版</value>
   </data>
-
 </root>
