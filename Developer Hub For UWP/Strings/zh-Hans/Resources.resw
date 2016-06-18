@@ -426,4 +426,7 @@
   <data name="wrp.Text" xml:space="preserve">
     <value>发行预览版</value>
   </data>
+  <data name="libs.Content" xml:space="preserve">
+    <value>库</value>
+  </data>
 </root>
