@@ -211,7 +211,7 @@
   </data>
   <data name="ErrCho" xml:space="preserve">
     <value>您未選擇圖標或只選擇了一個圖標。</value>
-    <comment>You haven't chosen a file or choose have only chosen one file.</comment>
+    <comment>You haven&apos;t chosen a file or choose have only chosen one file.</comment>
   </data>
   <data name="Fb.Content" xml:space="preserve">
     <value>反饋</value>
@@ -427,7 +427,5 @@ Fuzzy</comment>
   <data name="wrp.Text" xml:space="preserve">
     <value>發布預覽版</value>
   </data>
-  <data name="libs.Content" xml:space="preserve">
-    <value>函式庫</value>
-  </data>
+
 </root>

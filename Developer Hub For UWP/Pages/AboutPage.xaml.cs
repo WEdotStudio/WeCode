@@ -33,10 +33,5 @@ namespace Developer_Hub_For_UWP.Pages
         {
             await Windows.System.Launcher.LaunchUriAsync(new Uri("http://patrickwu.cf/apps/"));
         }
-
-        private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
-        {
-            StandardPopup.IsOpen = !StandardPopup.IsOpen;
-        }
     }
 }
