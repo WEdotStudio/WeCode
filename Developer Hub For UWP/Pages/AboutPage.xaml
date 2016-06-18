@@ -14,20 +14,13 @@
             <Run Text="v 2.0.0"/>
         </TextBlock>
         <TextBlock x:Uid="Auth" Text="Author: Patrick Wu" FontSize="20"/>
-            <StackPanel Orientation="Horizontal">
-                <Button x:Uid="Fb" x:Name="feedbackButton" Content="Feedback" Click="feedbackButton_Click" Margin="5"/>
-                <Button x:Uid="RR" Content="Rate &#x0026; Review" Click="Button_Click" Margin="5"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button x:Uid="libs" Content="Libraries" Click="ShowPopupOffsetClicked" Margin="5" />
-                <Button x:Uid="AppMore" Content="More Apps From Me" Click="Button_Click_2" Margin="5"/>
-            </StackPanel>
-            <Popup VerticalOffset="10" HorizontalOffset="10" x:Name="StandardPopup">
-                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
-                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2" Width="400" Height="400">
-                    <ScrollViewer>
-                    <TextBlock TextWrapping="WrapWholeWords" Margin="5">
+        <Button x:Uid="Fb" x:Name="feedbackButton" Content="Feedback" Click="feedbackButton_Click" Margin="5"/>
+        <Button x:Uid="RR" Content="Rate &#x0026; Review" Click="Button_Click" Margin="5"/>
+        <Button x:Uid="AppMore" Content="More Apps From Me" Click="Button_Click_2" Margin="5"/>
+        <TextBlock TextWrapping="WrapWholeWords" Margin="5">
+            <Run x:Uid="Intro" Text="This app uses following packages and data:"/>
+            <LineBreak/>
+            <LineBreak/>
             <Run Text="Intense Toolkit 0.5.0 "/>
             <LineBreak/>
             <Run Text="First Floor Software"/>
@@ -78,13 +71,6 @@
             <Run Text="   "/>
             <Hyperlink  NavigateUri="https://twitter.com/mehedih_"><Run Text="Twitter(Mehedi Hassan)"/></Hyperlink>
         </TextBlock>
-                    </ScrollViewer>
-                </Border>
-            </Popup>
-
-
-
-       
         
     </StackPanel>
     </ScrollViewer>
