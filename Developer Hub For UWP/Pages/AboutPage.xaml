@@ -15,7 +15,11 @@
             </TextBlock>
             <TextBlock x:Uid="Auth" Text="Author: Patrick Wu" FontSize="20"/>
             <TextBlock Text="     " FontSize="20"/>
-            <Button x:Uid="Fb" x:Name="feedbackButton" Content="Feedback" Click="feedbackButton_Click" Margin="5"/>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Button x:Name="feedbackButton" FontFamily="Segoe MDL2 Assets" Content="&#xE15F;" Click="feedbackButton_Click" Margin="0,0,5,0"/>
+                <Button FontFamily="Segoe MDL2 Assets" Content="&#xE119;" Click="mailButton_Click"/>
+            </StackPanel>
+
             <Button x:Uid="RR" Content="Rate &#x0026; Review" Click="Button_Click" Margin="5"/>
             <Button x:Uid="libs" Content="Libraries" Click="ShowPopupOffsetClicked" Margin="5" />
             <Button x:Uid="AppMore" Content="More Apps From Me" Click="Button_Click_2" Margin="5"/>
