@@ -51,7 +51,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Uid="rusmai" Text="Recent Used Segoe MDL2 Assets Icon" HorizontalAlignment="Left" VerticalAlignment="Bottom"   FontSize="25%" Foreground="White" />
                 <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE017;" Tapped="TextBlock_Tapped_1" Grid.Column="1"  VerticalAlignment="Bottom" FontSize="25%" />
-                <GridView x:Name="gridView" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2"  SelectionMode="None" IsItemClickEnabled="True" ItemClick="gridView_ItemClick" SizeChanged="StackPanel_SizeChanged">
+                <GridView x:Name="gridView" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2"  SelectionMode="None" IsItemClickEnabled="True" ItemClick="gridView_ItemClick" SizeChanged="StackPanel_SizeChanged" Margin="0,5">
                     <GridView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel x:Name="a" Height="80">
