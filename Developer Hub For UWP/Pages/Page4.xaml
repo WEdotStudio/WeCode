@@ -15,16 +15,26 @@
         </Style>
     </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--#region Header-->
+        <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="/Assets/hero.png" Stretch="Uniform" HorizontalAlignment="Right" Height="200" Grid.RowSpan="4"/>
+            <TextBlock x:Name="title"  Text="Latest Build Info" HorizontalAlignment="Left"  FontSize="30%"  Margin="10,10,10,0" Foreground="White"  VerticalAlignment="Center"/>
+            <TextBlock x:Uid="lib"  Grid.Row="1" Text="Latest Internal Build" HorizontalAlignment="Left"  Margin="10,10,10,0" FontSize="20%" Foreground="White" />
+            <TextBlock x:Name="Build_v" Text="14354"  HorizontalAlignment="Left"  FontSize="50%"  Margin="10,0" Foreground="White" Grid.Row="2"/>
+            <TextBlock Text="Powered by 🐱💻 Inside Ten" VerticalAlignment="Bottom" Margin="10" Grid.Row="3"/>
+        </Grid>
+        <!--#endregion-->
         <ListView Grid.Row="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" SelectionMode="None">
-            <!--#region Header-->
-            <ListViewItem  Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="0,15" Padding="10">
-                <StackPanel>
-                    <TextBlock x:Uid="lib" Text="Latest Internal Build" HorizontalAlignment="Left"  FontSize="25%" Foreground="White" />
-                    <TextBlock x:Name="Build_v" Text="14354"  HorizontalAlignment="Left"  FontSize="32.5%" Foreground="White" Grid.Row="1" Grid.RowSpan="2"/>
-                </StackPanel>
-            </ListViewItem>
-            <!--#endregion-->
-
             <ListViewHeaderItem x:Uid="pc" Content="PC"/>
 
             <!--#region pcwrp-->
@@ -81,9 +91,9 @@
                 </Grid>
             </ListViewItem>
             <!--#endregion-->
-            
+
             <ListViewHeaderItem x:Uid="mobile" Content="Mobile"/>
-                
+
             <!--#region mowrp-->
             <ListViewItem Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="0,15" Padding="10">
                 <Grid >

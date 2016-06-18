@@ -27,6 +27,9 @@ namespace Developer_Hub_For_UWP.Pages
             this.InitializeComponent();
             _localSettings = ApplicationData.Current.LocalSettings;
 
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            title.Text = loader.GetString("LBI");
+
             UpdateBuildInfo();
             InitializeIconHistoryList();
         }
@@ -122,6 +125,16 @@ namespace Developer_Hub_For_UWP.Pages
                                     currentAV.Id,
                                     ViewSizePreference.UseMinimum);
                             });
+        }
+
+        private void TextBlock_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Page4), Frame);
+        }
+
+        private void TextBlock_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Page1), Frame);
         }
     }
    
