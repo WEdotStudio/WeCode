@@ -13,11 +13,11 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Uid="Sett" Text="Settings" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}"  Margin="10"/>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Margin="10">
             <TextBlock x:Uid="his" Text="History" FontSize="25"/>
-            <CheckBox x:Uid="sma" x:Name="sma" Content="Segoe MDL2 Assets" IsChecked="False"/>
-            <CheckBox x:Uid="uri" x:Name="urim" Content="URI" IsChecked="False"/>
-            <Button x:Uid="CH" Content="Clear History" Margin="10" Click="Button_Click"/>
+            <CheckBox x:Uid="sma" Margin="5,0" x:Name="sma" Content="Segoe MDL2 Assets" IsChecked="False"/>
+            <CheckBox x:Uid="uri" Margin="5,0" x:Name="urim" Content="URI" IsChecked="False"/>
+            <Button x:Uid="CH" Content="Clear History" Click="Button_Click"/>
         </StackPanel>
        <!-- <Pivot Grid.Row="1">
             <PivotItem Header="URI Tester">

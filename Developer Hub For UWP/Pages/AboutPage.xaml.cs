@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -25,13 +26,23 @@ namespace Developer_Hub_For_UWP.Pages
             }
             else
             {
-                await Windows.System.Launcher.LaunchUriAsync(new Uri("mailto:wotingwu@live.com"));
+                await new MessageDialog("ERROR: Cannot Find Feedback Hub. Please contact me through mail.").ShowAsync();
             }
 
         }
         private async void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("http://patrickwu.cf/apps/"));
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store://publisher/?name=WE. Studio"));
+        }
+
+        private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
+        {
+            StandardPopup.IsOpen = !StandardPopup.IsOpen;
+        }
+
+        private async void mailButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("mailto:patrick.we.studio@outlook.com"));
         }
     }
 }
