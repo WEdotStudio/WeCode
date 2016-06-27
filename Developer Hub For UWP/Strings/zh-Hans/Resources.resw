@@ -162,7 +162,7 @@
     <comment>Remarks:</comment>
   </data>
   <data name="SMI" xml:space="preserve">
-    <value>Segoe MDL2 Assets 字体图标浏览器</value>
+    <value>字体图标浏览器</value>
     <comment>Segoe MDL2 icons</comment>
   </data>
   <data name="Test.Content" xml:space="preserve">
@@ -314,7 +314,7 @@
     <comment>Settings</comment>
   </data>
   <data name="SMIt.Text" xml:space="preserve">
-    <value>Segoe MDL2 Assets 字体图标浏览器</value>
+    <value>字体图标浏览器</value>
     <comment>Segoe MDL2 Assets Icons Browser</comment>
   </data>
   <data name="Btn1.ToolTipService.ToolTip" xml:space="preserve">
@@ -377,7 +377,7 @@
     <value>最新内部预览版本</value>
   </data>
   <data name="rusmai.Text" xml:space="preserve">
-    <value>最近使用的Segoe MDL2 Assets字体图标</value>
+    <value>最近使用的字体图标</value>
   </data>
   <data name="welcome.Text" xml:space="preserve">
     <value>欢迎，开发者</value>
@@ -412,7 +412,7 @@
     <comment>PC Ring</comment>
   </data>
   <data name="sma.Content" xml:space="preserve">
-    <value>Segoe MDL2 Assets字体图标</value>
+    <value>字体图标</value>
   </data>
   <data name="uri.Content" xml:space="preserve">
     <value>URI</value>
