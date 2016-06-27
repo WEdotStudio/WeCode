@@ -56,6 +56,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <EnableGatekeeperAnalysis>false</EnableGatekeeperAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -172,6 +173,7 @@
     <Compile Include="Presentation\DataModel.cs" />
     <Compile Include="Presentation\HistoryModel.cs" />
     <Compile Include="Presentation\insideten.cs" />
+    <Compile Include="Presentation\InstalledFont.cs" />
     <Compile Include="Presentation\ResponsiveGridView.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
@@ -263,7 +265,24 @@
       <Name>Microsoft Mobile Extension SDK for Universal App Platform</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Color\Color.csproj">
+      <Project>{63281117-2ff4-46be-8114-659488c3bffd}</Project>
+      <Name>Color</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{30264440-54b2-4524-bf85-80a0f5540bec}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Json to CSharp Generator\Json to CSharp Generator.csproj">
+      <Project>{c9df65cd-ea82-4148-b819-79789cf533a3}</Project>
+      <Name>Json to CSharp Generator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Notifications\Notifications.csproj">
+      <Project>{6111bfe2-210a-4399-87c9-c3685cd3df3e}</Project>
+      <Name>Notifications</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
