@@ -430,4 +430,8 @@ Fuzzy</comment>
   <data name="libs.Content" xml:space="preserve">
     <value>函式庫</value>
   </data>
+  <data name="CmbFontFamily.PlaceholderText" xml:space="preserve">
+    <value>----選擇一種圖標字型----</value>
+    <comment>----Choose a Font----</comment>
+  </data>
 </root>

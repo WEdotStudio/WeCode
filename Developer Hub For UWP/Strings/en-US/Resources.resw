@@ -429,4 +429,8 @@
   <data name="libs.Content" xml:space="preserve">
     <value>Libraries</value>
   </data>
+  <data name="CmbFontFamily.PlaceholderText" xml:space="preserve">
+    <value>----Choose a Font----</value>
+    <comment>----Choose a Font----</comment>
+  </data>
 </root>
