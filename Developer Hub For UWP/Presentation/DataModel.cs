@@ -1,8 +1,12 @@
 ﻿namespace Developer_Hub_For_UWP.Presentation
 {
+    class Icon
+    {
+        public string Graph { get; set; }
+    }
     class Item
     {
-        public string Name { get; set; }
+        public string Font { get; set; }
         public string Graph { get; set; }
     }
     class URI

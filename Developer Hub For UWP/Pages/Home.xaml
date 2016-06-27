@@ -35,7 +35,7 @@
                 <TextBlock x:Name="title"  Text="Latest Build Info" HorizontalAlignment="Left"  FontSize="30%"  Margin="10,10,10,0" Foreground="White"  VerticalAlignment="Center"/>
                 <TextBlock x:Uid="lib"  Grid.Row="1" Text="Latest Internal Build" HorizontalAlignment="Left"  Margin="10,10,10,0" FontSize="20%" Foreground="White" />
                 <TextBlock x:Name="Build_v" Text="14354"  HorizontalAlignment="Left"  FontSize="50%"  Margin="10,0" Foreground="White" Grid.Row="2"/>
-                <TextBlock Text="Powered by 🐱💻 Inside Ten" VerticalAlignment="Bottom" Margin="10" Grid.Row="3"/>
+                <TextBlock Text="Powered by Inside Ten" VerticalAlignment="Bottom" Margin="10" Grid.Row="3"/>
                 <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE017;" Tapped="TextBlock_Tapped" Grid.Column="1" FontSize="30%" Margin="0,10,10,0"/>
             </Grid>
             <Grid Height="160" Padding="0,12.5">
@@ -54,10 +54,14 @@
                 <GridView x:Name="gridView" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2"  SelectionMode="None" IsItemClickEnabled="True" ItemClick="gridView_ItemClick" SizeChanged="StackPanel_SizeChanged" Margin="0,5">
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel x:Name="a" Height="80">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"  Text="{Binding Graph}" FontSize="30" HorizontalAlignment="Center" Foreground="White" Padding="4"/>
-                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" TextWrapping="Wrap"  Foreground="White"/>
-                            </StackPanel>
+                            <Grid x:Name="a" Height="80">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock FontFamily="{Binding Font}"  Text="{Binding Char}" FontSize="30" HorizontalAlignment="Center" Foreground="White" Padding="4"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Font}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="Wrap"  Foreground="White"/>
+                            </Grid>
                         </DataTemplate>
                     </GridView.ItemTemplate>
                     <GridView.ItemContainerStyle>
