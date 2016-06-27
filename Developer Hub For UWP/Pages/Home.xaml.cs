@@ -14,7 +14,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using static Developer_Hub_For_UWP.Presentation.insideten;
 
-//
 
 namespace Developer_Hub_For_UWP.Pages
 {
@@ -26,7 +25,7 @@ namespace Developer_Hub_For_UWP.Pages
         {
             this.InitializeComponent();
             _localSettings = ApplicationData.Current.LocalSettings;
-
+            
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             title.Text = loader.GetString("LBI");
 
@@ -44,13 +43,13 @@ namespace Developer_Hub_For_UWP.Pages
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {
-                        List<IconHistory> Items = new List<IconHistory>();
+                        List<Character> Items = new List<Character>();
 
                         while (!reader.EndOfStream)
                         {
                             var line = reader.ReadLine();
                             var values = line.Split(',');
-                            Items.Add(new IconHistory { Name = values[0], Graph = values[1] });
+                            Items.Add(new Character{ Font = values[0], Char = values[1], UnicodeIndex=Convert.ToInt32(values[2])});
                         }
                         Items.Reverse();
                         if(Items.Count == 0)
@@ -101,8 +100,7 @@ namespace Developer_Hub_For_UWP.Pages
         private async void gridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            IconHistory output = e.ClickedItem as IconHistory;
-            string selectInfo = output.Graph;
+            Character output = e.ClickedItem as Character;
             var currentAV = ApplicationView.GetForCurrentView();
             var newAV = CoreApplication.CreateNewView();
             await newAV.Dispatcher.RunAsync(
@@ -112,10 +110,10 @@ namespace Developer_Hub_For_UWP.Pages
                                 var newWindow = Window.Current;
                                 var newAppView = ApplicationView.GetForCurrentView();
 
-                                newAppView.Title = selectInfo + loader.GetString("Detail");
+                                newAppView.Title = loader.GetString("Details");
 
                                 var frame = new Frame();
-                                frame.Navigate(typeof(Browser), selectInfo);
+                                frame.Navigate(typeof(Browser), output);
                                 newWindow.Content = frame;
                                 newWindow.Activate();
 

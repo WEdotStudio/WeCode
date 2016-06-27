@@ -162,7 +162,7 @@
     <comment>Remarks:</comment>
   </data>
   <data name="SMI" xml:space="preserve">
-    <value>Segoe MDL2 Assets Icons Browser</value>
+    <value>Fonticon Browser</value>
     <comment>Segoe MDL2 icons</comment>
   </data>
   <data name="Test.Content" xml:space="preserve">
@@ -314,7 +314,7 @@
     <comment>Settings</comment>
   </data>
   <data name="SMIt.Text" xml:space="preserve">
-    <value>Segoe MDL2 Assets Icons Browser</value>
+    <value>Fonticon Browser</value>
     <comment>Segoe MDL2 Assets Icons Browser</comment>
   </data>
   <data name="Btn1.ToolTipService.ToolTip" xml:space="preserve">
@@ -377,7 +377,7 @@
     <value>Latest Internal Build</value>
   </data>
   <data name="rusmai.Text" xml:space="preserve">
-    <value>Recently Used Segoe MDL2 Assets Icon</value>
+    <value>Recently Used Fonticon</value>
   </data>
   <data name="welcome.Text" xml:space="preserve">
     <value>Hello, developer</value>
@@ -412,7 +412,7 @@
     <comment>PC Ring</comment>
   </data>
   <data name="sma.Content" xml:space="preserve">
-    <value>Segoe MDL2 Assets</value>
+    <value>Fonticons</value>
   </data>
   <data name="uri.Content" xml:space="preserve">
     <value>URI</value>
@@ -428,5 +428,9 @@
   </data>
   <data name="libs.Content" xml:space="preserve">
     <value>Libraries</value>
+  </data>
+  <data name="CmbFontFamily.PlaceholderText" xml:space="preserve">
+    <value>----Choose a Font----</value>
+    <comment>----Choose a Font----</comment>
   </data>
 </root>
