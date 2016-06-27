@@ -1,1 +1,1 @@
-C:\Files\Documents\Projects\Application\Developer Hub For UWP\Developer Hub For UWP\AppPackages\Developer Hub For UWP_2.0.0.0\Developer Hub For UWP_2.0.0.0_x86_x64.appxbundle
+C:\Files\Documents\Projects\Application\WeCode\Developer Hub For UWP\AppPackages\Developer Hub For UWP_2.0.0.0\Developer Hub For UWP_2.0.0.0_x86_x64.appxbundle
