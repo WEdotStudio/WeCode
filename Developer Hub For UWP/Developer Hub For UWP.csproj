@@ -97,6 +97,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="Assets\h.png" />
     <Content Include="Assets\hero.png" />
+    <Content Include="Assets\new-ver.png" />
     <Content Include="Assets\ninja.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
@@ -175,6 +176,7 @@
     <Compile Include="Presentation\insideten.cs" />
     <Compile Include="Presentation\InstalledFont.cs" />
     <Compile Include="Presentation\ResponsiveGridView.cs" />
+    <Compile Include="Presentation\Update.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
