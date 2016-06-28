@@ -32,7 +32,7 @@ namespace Developer_Hub_For_UWP.Pages
             UpdateBuildInfo();
             InitializeIconHistoryList();
         }
-
+        
         private async void InitializeIconHistoryList()
         {
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;

@@ -5,9 +5,12 @@ using Developer_Hub_For_UWP.Pages;
 using Developer_Hub_For_UWP.Presentation;
 using Windows.UI.ViewManagement;
 using Windows.UI;
-using Windows.System.Profile;
 using Windows.System;
-using Windows.UI.Xaml.Navigation;
+using System.Net.Http;
+using Windows.UI.Notifications;
+using System;
+using Windows.Data.Xml.Dom;
+using Newtonsoft.Json;
 
 namespace Developer_Hub_For_UWP
 {
@@ -50,9 +53,54 @@ namespace Developer_Hub_For_UWP
             vm.SelectedItem = vm.TopItems.First();
             this.ViewModel = vm;
 
+            CheckUpdate();
+
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
         }
+        private async void CheckUpdate()
+        {
+            var client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(new Uri("http://ap.westudio.ml/sources/json/wecode-update.json"));
 
+            var jsonString = await response.Content.ReadAsStringAsync();
+            Update.RootObject data = JsonConvert.DeserializeObject<Update.RootObject>(jsonString);
+            string version = data.version;
+            string[] versionnum = version.Split('.');
+            int versioncount = Convert.ToInt32(versionnum[0]) * 10000 + Convert.ToInt32(versionnum[1]) * 100 + Convert.ToInt32(versionnum[2]);
+            if (versioncount > 20100)
+            {
+                HttpResponseMessage detailstring = await client.GetAsync(new Uri(data.detail.en));
+
+                string detailstringin = await detailstring.Content.ReadAsStringAsync();
+                string xmlContent = string.Empty;
+                XmlDocument xdoc = new XmlDocument();
+                xmlContent = string.Format(
+                    "<toast>" +
+                        "<visual>" +
+                            "<binding template = 'ToastGeneric'>" +
+                                   "<image placement = 'appLogoOverride' src = '' />" +
+                                   "<text> Version {0} released!</text>" +
+                                    "<text>{1}</text>" +
+                                    "<image  placement = 'hero' src = 'Assets/new-ver.png' />" +
+                            "</binding>" +
+                        "</visual>" +
+                        "<actions>" +
+                            "<action" +
+                             " content = 'Download Now'" +
+                             " activationType='protocol'" +
+                             " arguments = 'ms-windows-store://pdp/?ProductId=9nblggh5p90f' />" +
+                             "<action" +
+                             " content = 'Maybe Later'" +
+                             " arguments = 'action=later' />" +
+                         "</actions>" +
+                    "</toast>",
+                     version, detailstringin
+                );
+                xdoc.LoadXml(xmlContent);
+                ToastNotification toast1 = new ToastNotification(xdoc);
+                ToastNotificationManager.CreateToastNotifier().Show(toast1);
+            }
+        }
         public ShellViewModel ViewModel { get; private set; }
 
         public Frame RootFrame
