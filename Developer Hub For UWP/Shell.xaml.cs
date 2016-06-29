@@ -67,9 +67,25 @@ namespace Developer_Hub_For_UWP
             string version = data.version;
             string[] versionnum = version.Split('.');
             int versioncount = Convert.ToInt32(versionnum[0]) * 10000 + Convert.ToInt32(versionnum[1]) * 100 + Convert.ToInt32(versionnum[2]);
-            if (versioncount > 20100)
+            if (versioncount > 20005)
             {
-                HttpResponseMessage detailstring = await client.GetAsync(new Uri(data.detail.en));
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                HttpResponseMessage detailstring;
+                switch (loader.GetString("nr_lan"))
+                {
+                    case "en":
+                        detailstring = await client.GetAsync(new Uri(data.detail.en));
+                        break;
+                    case "zh-hans":
+                         detailstring = await client.GetAsync(new Uri(data.detail.zh_hans));
+                        break;
+                    case "zh-hant":
+                         detailstring = await client.GetAsync(new Uri(data.detail.zh_hant));
+                        break;
+                    default:
+                        detailstring = await client.GetAsync(new Uri(data.detail.en));
+                        break;
+                }
 
                 string detailstringin = await detailstring.Content.ReadAsStringAsync();
                 string xmlContent = string.Empty;
@@ -79,22 +95,23 @@ namespace Developer_Hub_For_UWP
                         "<visual>" +
                             "<binding template = 'ToastGeneric'>" +
                                    "<image placement = 'appLogoOverride' src = '' />" +
-                                   "<text> Version {0} released!</text>" +
-                                    "<text>{1}</text>" +
+                                   "<text> {0} {1} {2}</text>" +
+                                    "<text>{3}</text>" +
                                     "<image  placement = 'hero' src = 'Assets/new-ver.png' />" +
                             "</binding>" +
                         "</visual>" +
                         "<actions>" +
                             "<action" +
-                             " content = 'Download Now'" +
+                             " content = '{4}'" +
                              " activationType='protocol'" +
                              " arguments = 'ms-windows-store://pdp/?ProductId=9nblggh5p90f' />" +
                              "<action" +
-                             " content = 'Maybe Later'" +
-                             " arguments = 'action=later' />" +
+                             " content = '{5}'" +
+                             " activationType='system'"+
+                             " arguments = 'dismiss' />" +
                          "</actions>" +
                     "</toast>",
-                     version, detailstringin
+                     loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_4")
                 );
                 xdoc.LoadXml(xmlContent);
                 ToastNotification toast1 = new ToastNotification(xdoc);
