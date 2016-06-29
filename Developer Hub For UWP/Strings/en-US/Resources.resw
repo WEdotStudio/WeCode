@@ -433,4 +433,24 @@
     <value>----Choose a Font----</value>
     <comment>----Choose a Font----</comment>
   </data>
+  <data name="nr_1" xml:space="preserve">
+    <value>Version</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_2" xml:space="preserve">
+    <value>Released!</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_3" xml:space="preserve">
+    <value>Update Now</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_4" xml:space="preserve">
+    <value>Maybe Later</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_lan" xml:space="preserve">
+    <value>en</value>
+    <comment>Language code</comment>
+  </data>
 </root>

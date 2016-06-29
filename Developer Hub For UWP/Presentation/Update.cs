@@ -7,7 +7,7 @@
         {
             public string en { get; set; }
             public string zh_hant { get; set; }
-            public string zhhans { get; set; }
+            public string zh_hans { get; set; }
         }
 
         public class RootObject
