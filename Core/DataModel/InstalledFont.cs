@@ -1,12 +1,8 @@
 ﻿using SharpDX.DirectWrite;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Developer_Hub_For_UWP.Presentation
+namespace Core.DataModel
 {
     public class InstalledFont
     {

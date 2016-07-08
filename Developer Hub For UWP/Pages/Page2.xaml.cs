@@ -1,14 +1,12 @@
-﻿using Developer_Hub_For_UWP.Presentation;
+﻿using Core.DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Xml;
 using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 namespace Developer_Hub_For_UWP.Pages
 {

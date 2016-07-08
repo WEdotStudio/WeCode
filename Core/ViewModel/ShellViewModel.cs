@@ -1,11 +1,10 @@
 ﻿using Intense.Presentation;
 using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 
-namespace Developer_Hub_For_UWP.Presentation
+namespace Core.ViewModel
 {
     public class ShellViewModel : NotifyPropertyChanged
     {

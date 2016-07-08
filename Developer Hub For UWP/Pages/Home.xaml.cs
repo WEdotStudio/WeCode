@@ -1,4 +1,4 @@
-﻿using Developer_Hub_For_UWP.Presentation;
+﻿using Core.DataModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,8 +12,7 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using static Developer_Hub_For_UWP.Presentation.insideten;
-
+using static Core.DataModel.insideten;
 
 namespace Developer_Hub_For_UWP.Pages
 {

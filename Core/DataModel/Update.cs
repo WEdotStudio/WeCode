@@ -1,7 +1,7 @@
-﻿namespace Developer_Hub_For_UWP.Presentation
+﻿namespace Core.DataModel
 {
 
-    class Update
+    public class Update
     {
         public class detail
         {
