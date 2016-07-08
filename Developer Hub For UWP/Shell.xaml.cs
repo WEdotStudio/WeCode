@@ -2,7 +2,8 @@
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Developer_Hub_For_UWP.Pages;
-using Developer_Hub_For_UWP.Presentation;
+using Core.DataModel;
+using Core.ViewModel;
 using Windows.UI.ViewManagement;
 using Windows.UI;
 using Windows.System;

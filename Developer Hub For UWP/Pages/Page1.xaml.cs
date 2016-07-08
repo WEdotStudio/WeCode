@@ -1,7 +1,5 @@
-﻿using Developer_Hub_For_UWP.Presentation;
-using SharpDX.DirectWrite;
+﻿using Core.DataModel;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Windows.ApplicationModel.Core;
