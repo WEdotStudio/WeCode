@@ -11,7 +11,8 @@
             <TextBlock x:Uid="Aboutt" Text="About" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}" />
             <TextBlock FontSize="20">
             <Run  x:Uid="AppN" Text="WeCode "/>
-            <Run Text="v 2.0.0"/>
+            <Run Text="v 2.2"/>
+                <Run Foreground="Gray" Text=" pre-release-2.0.11"/>
             </TextBlock>
             <TextBlock x:Uid="Auth" Text="Author: Patrick Wu" FontSize="20"/>
             <TextBlock Text="     " FontSize="20"/>
