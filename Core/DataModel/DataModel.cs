@@ -1,15 +1,15 @@
-﻿namespace Developer_Hub_For_UWP.Presentation
+﻿namespace Core.DataModel
 {
-    class Icon
+    public class Icon
     {
         public string Graph { get; set; }
     }
-    class Item
+    public class Item
     {
         public string Font { get; set; }
         public string Graph { get; set; }
     }
-    class URI
+    public class URI
     {
         public string Intro { get; set; }
         public string Content { get; set; }

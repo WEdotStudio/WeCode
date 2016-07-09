@@ -1,4 +1,4 @@
-﻿namespace Developer_Hub_For_UWP.Presentation
+﻿namespace Core.ViewModel
 {
     public class ResponsiveGridView
     {

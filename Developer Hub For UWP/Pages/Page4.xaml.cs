@@ -2,7 +2,7 @@
 using System;
 using Windows.UI.Xaml.Controls;
 using Windows.Web.Http;
-using static Developer_Hub_For_UWP.Presentation.insideten;
+using static Core.DataModel.insideten;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
