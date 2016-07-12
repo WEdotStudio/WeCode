@@ -62,6 +62,11 @@ namespace Developer_Hub_For_UWP
             if (!_localSettings.Containers.ContainsKey("Settings"))
             {
                 ApplicationDataContainer container = _localSettings.CreateContainer("Settings", ApplicationDataCreateDisposition.Always);
+                _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
+                _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
+                _localSettings.Containers["Settings"].Values["IsFonticonExtraFileDownloaded"] = false;
+
+                DelLegacyHistory();
                 TransferToStorage();
             }
             var temp = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();        
@@ -74,6 +79,11 @@ namespace Developer_Hub_For_UWP
 
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
         }
+
+        private void DelLegacyHistory()
+        {
+            
+        }
         public async void TransferToStorage()
         {
             // Cant await inside catch, but this works anyway
@@ -84,7 +94,6 @@ namespace Developer_Hub_For_UWP
         {
              await Network.DownloadFile("http://insideten.xyz/api.json", 1);
         }
-
         private async void CheckUpdate()
         {
             var client = new HttpClient();
@@ -146,6 +155,7 @@ namespace Developer_Hub_For_UWP
                 ToastNotificationManager.CreateToastNotifier().Show(toast1);
             }
         }
+
         public ShellViewModel ViewModel { get; private set; }
 
         public Frame RootFrame

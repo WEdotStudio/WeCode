@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
+        
         <intense:PageHeader x:Name="NarrowHeader" 
                             Background="{ThemeResource SystemChromeLowColor}"
                             Icon="&#xE700;"
