@@ -12,6 +12,7 @@ using Windows.UI.Notifications;
 using System;
 using Windows.Data.Xml.Dom;
 using Newtonsoft.Json;
+using Windows.Networking.Connectivity;
 
 namespace Developer_Hub_For_UWP
 {
@@ -54,7 +55,12 @@ namespace Developer_Hub_For_UWP
             vm.SelectedItem = vm.TopItems.First();
             this.ViewModel = vm;
 
-            CheckUpdate();
+            var temp = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();        
+            if (temp == NetworkConnectivityLevel.InternetAccess)
+            {
+                CheckUpdate();
+            }
+            
 
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
         }
