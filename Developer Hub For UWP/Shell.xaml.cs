@@ -13,6 +13,7 @@ using System;
 using Windows.Data.Xml.Dom;
 using Newtonsoft.Json;
 using Windows.Networking.Connectivity;
+using Windows.Storage;
 
 namespace Developer_Hub_For_UWP
 {
@@ -20,10 +21,11 @@ namespace Developer_Hub_For_UWP
     {
         private bool isAltKeyPressed;
         private bool isControlKeyPressed;
+        private object _localSettings;
 
         public Shell()
         {
-
+            _localSettings = ApplicationData.Current.LocalSettings;
             this.InitializeComponent();
 
             var applicationView = ApplicationView.GetForCurrentView();
@@ -55,15 +57,26 @@ namespace Developer_Hub_For_UWP
             vm.SelectedItem = vm.TopItems.First();
             this.ViewModel = vm;
 
+           if( )
+            {
+
+            }
             var temp = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();        
             if (temp == NetworkConnectivityLevel.InternetAccess)
             {
                 CheckUpdate();
+                UpdateInsidetenApi();
             }
             
 
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
         }
+
+        private void UpdateInsidetenApi()
+        {
+            throw new NotImplementedException();
+        }
+
         private async void CheckUpdate()
         {
             var client = new HttpClient();

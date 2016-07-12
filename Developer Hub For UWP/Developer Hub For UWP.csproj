@@ -141,6 +141,7 @@
     <Content Include="Assets\Data\data.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Assets\Data\api.json" />
     <None Include="Developer Hub For UWP_StoreKey.pfx" />
     <Content Include="history.log">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
