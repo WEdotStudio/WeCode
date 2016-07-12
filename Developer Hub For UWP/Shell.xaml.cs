@@ -2,6 +2,7 @@
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Developer_Hub_For_UWP.Pages;
+using Core;
 using Core.DataModel;
 using Core.ViewModel;
 using Windows.UI.ViewManagement;
@@ -14,6 +15,7 @@ using Windows.Data.Xml.Dom;
 using Newtonsoft.Json;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
+using System.IO;
 
 namespace Developer_Hub_For_UWP
 {
@@ -21,11 +23,11 @@ namespace Developer_Hub_For_UWP
     {
         private bool isAltKeyPressed;
         private bool isControlKeyPressed;
-        private object _localSettings;
+        private ApplicationDataContainer _localSettings;
 
         public Shell()
         {
-            _localSettings = ApplicationData.Current.LocalSettings;
+            _localSettings =ApplicationData.Current.LocalSettings;
             this.InitializeComponent();
 
             var applicationView = ApplicationView.GetForCurrentView();
@@ -57,9 +59,10 @@ namespace Developer_Hub_For_UWP
             vm.SelectedItem = vm.TopItems.First();
             this.ViewModel = vm;
 
-           if( )
+            if (!_localSettings.Containers.ContainsKey("Settings"))
             {
-
+                ApplicationDataContainer container = _localSettings.CreateContainer("Settings", ApplicationDataCreateDisposition.Always);
+                TransferToStorage();
             }
             var temp = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();        
             if (temp == NetworkConnectivityLevel.InternetAccess)
@@ -71,10 +74,15 @@ namespace Developer_Hub_For_UWP
 
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
         }
-
-        private void UpdateInsidetenApi()
+        public async void TransferToStorage()
         {
-            throw new NotImplementedException();
+            // Cant await inside catch, but this works anyway
+            StorageFile stopfile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/Data/api.json"));
+            await stopfile.CopyAsync(ApplicationData.Current.LocalFolder);
+        }
+        private async void UpdateInsidetenApi()
+        {
+             await Network.DownloadFile("http://insideten.xyz/api.json", 1);
         }
 
         private async void CheckUpdate()
