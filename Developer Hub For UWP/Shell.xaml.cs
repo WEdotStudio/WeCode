@@ -69,20 +69,22 @@ namespace Developer_Hub_For_UWP
                 DelLegacyHistory();
                 TransferToStorage();
             }
-            var temp = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();        
-            if (temp == NetworkConnectivityLevel.InternetAccess)
-            {
-                CheckUpdate();
+            var conetvty = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
+            bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
+            if (conetvty == NetworkConnectivityLevel.InternetAccess)
+            {  
+                if (PopIgnored == true ) CheckUpdate();
                 UpdateInsidetenApi();
-            }
-            
+            }           
 
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
         }
 
-        private void DelLegacyHistory()
+        private async void DelLegacyHistory()
         {
-            
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile sampleFile = await localFolder.CreateFileAsync("history_icon.log", CreationCollisionOption.OpenIfExists);
+            await sampleFile.DeleteAsync();
         }
         public async void TransferToStorage()
         {
