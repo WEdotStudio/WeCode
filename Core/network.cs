@@ -128,7 +128,7 @@ namespace Core.Network
         public async Task<Status> GetStatus(string url)
         {
             Status status = new Status();
-            StatusCode code = await ReachStatusCode(website);
+            StatusCode code = await ReachStatusCode(url);
             status.details = code.status;
             status.code = code.code;
             if (code.code.StartsWith("1"))
