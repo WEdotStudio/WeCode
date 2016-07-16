@@ -8,16 +8,21 @@ namespace Core
 {
     public class Network
     {
+        public enum Response
+        {
+            Null =0,
+            Download=1
+        }
         /// <summary>
-        /// Reach For Internet Files
+        /// reach internet files and modify it.
         /// </summary>
         /// <param name="url">URL of the file</param>
-        /// <param name="num">0 for just reach the message, 1 for download to local folder Data</param>
-        public async static Task DownloadFile(string url, int num)
+        /// <param name="num">Ways to operate the file</param>
+        public async static Task<HttpResponseMessage> ReachFile(string url, Response way)
         {
             var client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(new Uri(url));
-            if(num == 1)
+            if(way == Response.Download)
             {
                 string filename = url.Split("/".ToCharArray()).Last();
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
@@ -35,7 +40,7 @@ namespace Core
                 }
                 streamout.Dispose();
             }
-        }
-        
+            return response;
+        }   
     }
 }
