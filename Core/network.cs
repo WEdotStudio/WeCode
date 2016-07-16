@@ -27,6 +27,7 @@ namespace Core.Network
         public string details { get; set; }
 
     }
+
     /// <summary>
     /// URL Praser
     /// </summary>
@@ -113,12 +114,18 @@ namespace Core.Network
             return code;
         }
     }
+
     /// <summary>
     /// Get the status of the network.
     /// </summary>
     public class NetworkStatus: UrlPhraser
     {
-        public async Task<Status> GetStatus(string website)
+        /// <summary>
+        /// Get the detail status of a url
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <returns>Status</returns>
+        public async Task<Status> GetStatus(string url)
         {
             Status status = new Status();
             StatusCode code = await ReachStatusCode(website);
@@ -156,12 +163,13 @@ namespace Core.Network
             }
             return status;
         }
+
         /// <summary>
         /// Set the proper color of network status
         /// </summary>
         /// <param name="color">Color indicator:r as red,g as green, b as blue, y as yellow</param>
         /// <returns></returns>
-        public Brush GetStatusColor(string color)
+        private Brush GetStatusColor(string color)
         {
             Color c;
             switch (color)
