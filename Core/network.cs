@@ -15,18 +15,28 @@ namespace Core
             DownloadToRemoteFolder = 2,
             DownloadToTemporaryFolder = 3,
         }
+        public struct Status
+        {
+            public string code { get; set; }
+           public string status { get; set; }
+        }
 
-        
+        /// <summary>
+        /// Reach URL and get response
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <returns></returns>
         public async static Task<HttpResponseMessage> ReachURL(string url)
         {
             HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(new Uri(url));
             return response;
         }
+
         /// <summary>
         /// Get File And Download it.
         /// </summary>
-        /// <param name="url">URL of the file</param>
+        /// <param name="url">URL</param>
         /// <param name="way">Ways to deal with the file</param>
         public async static Task ReachFile(string url, Response way)
         {
@@ -65,7 +75,7 @@ namespace Core
         /// <summary>
         /// Get Header 
         /// </summary>
-        /// <param name="url">URL of the file</param>
+        /// <param name="url">URL</param>
         public async static Task<HttpResponseMessage> ReachHeader(string url)
         {
             HttpClient httpClient = new HttpClient();
@@ -75,10 +85,19 @@ namespace Core
             return httpResponse;
         }
 
-        public async static Task<string> ReachStatusCode(string url)
+        /// <summary>
+        /// Reach Status Code
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <returns></returns>
+        public async static Task<Status> ReachStatusCode(string url)
         {
+            Status code = new Status();
             HttpResponseMessage httpResponse = await ReachHeader(url);
-
+            string[] text = httpResponse.ToString().Split(Convert.ToChar(","));
+            code.code = (text[0].Split(Convert.ToChar(":")))[1].Substring(1);
+            code.status = (text[1].Split(Convert.ToChar(":")))[1].Replace(Convert.ToChar("'"), Convert.ToChar(" ")).Trim();
+            return code;
         }
     }
 }
