@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using Windows.ApplicationModel.Core;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.Storage;
@@ -73,19 +72,20 @@ namespace Developer_Hub_For_UWP.Pages
         }
         private async void UpdateBuildInfo()
         {
+            //System Version
             string sv = AnalyticsInfo.VersionInfo.DeviceFamilyVersion;
             ulong v = ulong.Parse(sv);
             ulong v3 = (v & 0x00000000FFFF0000L) >> 16;
             bu.Text = $"{v3}";
 
+            //System Info
             EasClientDeviceInformation eas = new EasClientDeviceInformation();
             ma.Text = eas.SystemManufacturer+" "+ eas.SystemProductName;
 
-            var client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(new Uri("http://insideten.xyz/api.json"));
-
-            var jsonString = await response.Content.ReadAsStringAsync();
-            //if(!_localSettings.Containers.)
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile jsonFile = await localFolder.GetFileAsync("api.json");
+            var jsonString = await FileIO.ReadTextAsync(jsonFile);
+            
             RootObject data = JsonConvert.DeserializeObject<RootObject>(jsonString);
             Build_v.Text = data.@internal.build;
         }

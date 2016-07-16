@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:intense="using:Intense.UI.Controls"
     xmlns:local="using:Developer_Hub_For_UWP"
-    xmlns:presentation="using:Developer_Hub_For_UWP.Presentation"
+    xmlns:presentation="using:Core.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
+        
         <intense:PageHeader x:Name="NarrowHeader" 
                             Background="{ThemeResource SystemChromeLowColor}"
                             Icon="&#xE700;"

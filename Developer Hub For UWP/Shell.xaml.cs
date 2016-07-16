@@ -2,6 +2,7 @@
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Developer_Hub_For_UWP.Pages;
+using Core;
 using Core.DataModel;
 using Core.ViewModel;
 using Windows.UI.ViewManagement;
@@ -12,6 +13,9 @@ using Windows.UI.Notifications;
 using System;
 using Windows.Data.Xml.Dom;
 using Newtonsoft.Json;
+using Windows.Networking.Connectivity;
+using Windows.Storage;
+using System.IO;
 
 namespace Developer_Hub_For_UWP
 {
@@ -19,10 +23,11 @@ namespace Developer_Hub_For_UWP
     {
         private bool isAltKeyPressed;
         private bool isControlKeyPressed;
+        private ApplicationDataContainer _localSettings;
 
         public Shell()
         {
-
+            _localSettings =ApplicationData.Current.LocalSettings;
             this.InitializeComponent();
 
             var applicationView = ApplicationView.GetForCurrentView();
@@ -54,9 +59,42 @@ namespace Developer_Hub_For_UWP
             vm.SelectedItem = vm.TopItems.First();
             this.ViewModel = vm;
 
-            CheckUpdate();
+            if (!_localSettings.Containers.ContainsKey("Settings"))
+            {
+                ApplicationDataContainer container = _localSettings.CreateContainer("Settings", ApplicationDataCreateDisposition.Always);
+                _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
+                _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
+                _localSettings.Containers["Settings"].Values["IsFonticonExtraFileDownloaded"] = false;
+
+                DelLegacyHistory();
+                TransferToStorage();
+            }
+            var conetvty = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
+            bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
+            if (conetvty == NetworkConnectivityLevel.InternetAccess)
+            {  
+                if (PopIgnored == true ) CheckUpdate();
+                UpdateInsidetenApi();
+            }           
 
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
+        }
+
+        private async void DelLegacyHistory()
+        {
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile sampleFile = await localFolder.CreateFileAsync("history_icon.log", CreationCollisionOption.OpenIfExists);
+            await sampleFile.DeleteAsync();
+        }
+        public async void TransferToStorage()
+        {
+            // Cant await inside catch, but this works anyway
+            StorageFile stopfile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/Data/api.json"));
+            await stopfile.CopyAsync(ApplicationData.Current.LocalFolder);
+        }
+        private async void UpdateInsidetenApi()
+        {
+             await Network.DownloadFile("http://insideten.xyz/api.json", 1);
         }
         private async void CheckUpdate()
         {
@@ -119,6 +157,7 @@ namespace Developer_Hub_For_UWP
                 ToastNotificationManager.CreateToastNotifier().Show(toast1);
             }
         }
+
         public ShellViewModel ViewModel { get; private set; }
 
         public Frame RootFrame
