@@ -73,7 +73,7 @@ namespace Developer_Hub_For_UWP
             bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
             if (conetvty == NetworkConnectivityLevel.InternetAccess)
             {  
-                if (!PopIgnored == true ) CheckUpdate();
+                if (PopIgnored == false ) CheckUpdate();
                 UpdateInsidetenApi();
             }           
 
@@ -98,15 +98,19 @@ namespace Developer_Hub_For_UWP
         }
         private async void CheckUpdate()
         {
+            string url = "http://ap.westudio.ml/sources/json/wecode-update.json";
+#if DEBUG
+            url = "http://ap.westudio.ml/sources/json/wecode-update-test.json";
+#endif
             var client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(new Uri("http://ap.westudio.ml/sources/json/wecode-update.json"));
+            HttpResponseMessage response = await client.GetAsync(new Uri(url));
 
             var jsonString = await response.Content.ReadAsStringAsync();
             Update.RootObject data = JsonConvert.DeserializeObject<Update.RootObject>(jsonString);
             string version = data.version;
             string[] versionnum = version.Split('.');
             int versioncount = Convert.ToInt32(versionnum[0]) * 10000 + Convert.ToInt32(versionnum[1]) * 100 + Convert.ToInt32(versionnum[2]);
-            if (versioncount > 20005)
+            if (versioncount > 20200)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
                 HttpResponseMessage detailstring;
