@@ -2,7 +2,7 @@
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Developer_Hub_For_UWP.Pages;
-using Core;
+using Core.Network;
 using Core.DataModel;
 using Core.ViewModel;
 using Windows.UI.ViewManagement;
@@ -73,7 +73,7 @@ namespace Developer_Hub_For_UWP
             bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
             if (conetvty == NetworkConnectivityLevel.InternetAccess)
             {  
-                if (PopIgnored == true ) CheckUpdate();
+                if (!PopIgnored == true ) CheckUpdate();
                 UpdateInsidetenApi();
             }           
 
@@ -94,7 +94,7 @@ namespace Developer_Hub_For_UWP
         }
         private async void UpdateInsidetenApi()
         {
-             await Network.DownloadFile("http://insideten.xyz/api.json", 1);
+            await UrlPhraser.ReachFile("http://insideten.xyz/api.json", Response.DownloadToLocalFolder);
         }
         private async void CheckUpdate()
         {
