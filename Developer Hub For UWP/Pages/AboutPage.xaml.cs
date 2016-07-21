@@ -34,11 +34,6 @@ namespace Developer_Hub_For_UWP.Pages
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store://publisher/?name=WE. Studio"));
         }
 
-        private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
-        {
-            StandardPopup.IsOpen = !StandardPopup.IsOpen;
-        }
-
         private async void mailButton_Click(object sender, RoutedEventArgs e)
         {
             await Windows.System.Launcher.LaunchUriAsync(new Uri("mailto:patrick.we.studio@outlook.com"));

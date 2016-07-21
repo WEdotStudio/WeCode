@@ -12,7 +12,6 @@
             <TextBlock FontSize="20">
             <Run  x:Uid="AppN" Text="WeCode "/>
             <Run Text="v 2.2"/>
-                <Run Foreground="Gray" Text=" pre-release-2.0.11"/>
             </TextBlock>
             <TextBlock x:Uid="Auth" Text="Author: Patrick Wu" FontSize="20"/>
             <TextBlock Text="     " FontSize="20"/>
@@ -20,16 +19,14 @@
                 <Button x:Name="feedbackButton" FontFamily="Segoe MDL2 Assets" Content="&#xE15F;" Click="feedbackButton_Click" Margin="0,0,5,0"/>
                 <Button FontFamily="Segoe MDL2 Assets" Content="&#xE119;" Click="mailButton_Click"/>
             </StackPanel>
-
-            <Button x:Uid="RR" Content="Rate &#x0026; Review" Click="Button_Click" Margin="5"/>
-            <Button x:Uid="libs" Content="Libraries" Click="ShowPopupOffsetClicked" Margin="5" />
-            <Button x:Uid="AppMore" Content="More Apps From Me" Click="Button_Click_2" Margin="5"/>
-            <Popup VerticalOffset="10" HorizontalOffset="10" x:Name="StandardPopup">
-                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
-                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2" Width="400" Height="400">
-                    <ScrollViewer>
-                        <TextBlock TextWrapping="WrapWholeWords" Margin="5">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Button x:Uid="RR" Content="Rate &#x0026; Review" Click="Button_Click" Margin="0,0,5,0"/>
+                <Button x:Uid="libs" Content="Libraries">
+                    <Button.Flyout>
+                        <Flyout>
+                            <Border BorderThickness="0" Width="400" Height="400">
+                                <ScrollViewer>
+                                    <TextBlock TextWrapping="WrapWholeWords" Margin="5">
                             <Run Text="Intense Toolkit 0.5.0 "/>
                             <LineBreak/>
                             <Run Text="First Floor Software"/>
@@ -79,10 +76,16 @@
                             <Hyperlink  NavigateUri="https://twitter.com/InsideTen_"><Run Text="Twitter(Inside Ten)"/></Hyperlink>
                             <Run Text="   "/>
                             <Hyperlink  NavigateUri="https://twitter.com/mehedih_"><Run Text="Twitter(Mehedi Hassan)"/></Hyperlink>
-                        </TextBlock>
-                    </ScrollViewer>
-                </Border>
-            </Popup>
+                                    </TextBlock>
+                                </ScrollViewer>
+                            </Border>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+           
+            <Button x:Uid="AppMore" Content="More Apps From Me" Click="Button_Click_2" Margin="5"/>
+
 
 
 
