@@ -71,9 +71,11 @@ namespace Developer_Hub_For_UWP
             }
             var conetvty = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
             bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
+            bool PopupDisabled = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"]);
+            bool PopupShow = (PopIgnored == false) || (PopupDisabled == false) || ((PopIgnored == false) && (PopupDisabled == false));
             if (conetvty == NetworkConnectivityLevel.InternetAccess)
             {  
-                if (PopIgnored == false ) CheckUpdate();
+                if (PopupShow) CheckUpdate();
                 UpdateInsidetenApi();
             }           
 
