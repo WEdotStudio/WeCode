@@ -125,15 +125,7 @@
     <value>视觉资产(Visual Assets)生成器</value>
     <comment>Visual Assets Generator</comment>
   </data>
-  <data name="Cp1.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp2.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp3.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="copy" xml:space="preserve">
     <value>复制</value>
     <comment>Copy</comment>
   </data>
@@ -364,10 +356,6 @@
   <data name="Sett.Text" xml:space="preserve">
     <value>设置</value>
     <comment>Settings</comment>
-  </data>
-  <data name="Cp4.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
   </data>
   <data name="FI.Text" xml:space="preserve">
     <value>字体图标</value>

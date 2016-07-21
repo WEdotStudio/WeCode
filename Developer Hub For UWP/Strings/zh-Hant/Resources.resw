@@ -125,15 +125,7 @@
     <value>視覺資產(Visual Assets)生成器</value>
     <comment>Visual Assets Generator</comment>
   </data>
-  <data name="Cp1.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp2.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp3.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="copy" xml:space="preserve">
     <value>複製</value>
     <comment>Copy</comment>
   </data>
@@ -365,10 +357,6 @@ Fuzzy</comment>
   <data name="Sett.Text" xml:space="preserve">
     <value>設置</value>
     <comment>Settings</comment>
-  </data>
-  <data name="Cp4.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
   </data>
   <data name="FI.Text" xml:space="preserve">
     <value>字形圖標</value>
