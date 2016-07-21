@@ -125,15 +125,7 @@
     <value>視覺資產(Visual Assets)生成器</value>
     <comment>Visual Assets Generator</comment>
   </data>
-  <data name="Cp1.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp2.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp3.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="copy" xml:space="preserve">
     <value>複製</value>
     <comment>Copy</comment>
   </data>
@@ -366,10 +358,6 @@ Fuzzy</comment>
     <value>設置</value>
     <comment>Settings</comment>
   </data>
-  <data name="Cp4.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
   <data name="FI.Text" xml:space="preserve">
     <value>字形圖標</value>
     <comment>Fonticon</comment>
@@ -453,5 +441,14 @@ Fuzzy</comment>
   <data name="nr_lan" xml:space="preserve">
     <value>zh-hant</value>
     <comment>Language code</comment>
+  </data>
+  <data name="nr_5" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>開啟</value>
   </data>
 </root>

@@ -21,6 +21,12 @@ namespace Developer_Hub_For_UWP.Pages
         public Browser()
         {
             this.InitializeComponent();
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            ToolTipService.SetToolTip(Cp1, loader.GetString("copy"));
+            ToolTipService.SetToolTip(Cp2, loader.GetString("copy"));
+            ToolTipService.SetToolTip(Cp3, loader.GetString("copy"));
+            ToolTipService.SetToolTip(Cp4, loader.GetString("copy"));
 
             var applicationView = ApplicationView.GetForCurrentView();
             var titleBar = applicationView.TitleBar;

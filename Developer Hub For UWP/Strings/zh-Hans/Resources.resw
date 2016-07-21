@@ -125,15 +125,7 @@
     <value>视觉资产(Visual Assets)生成器</value>
     <comment>Visual Assets Generator</comment>
   </data>
-  <data name="Cp1.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp2.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp3.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="copy" xml:space="preserve">
     <value>复制</value>
     <comment>Copy</comment>
   </data>
@@ -365,10 +357,6 @@
     <value>设置</value>
     <comment>Settings</comment>
   </data>
-  <data name="Cp4.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
   <data name="FI.Text" xml:space="preserve">
     <value>字体图标</value>
     <comment>Fonticon</comment>
@@ -452,5 +440,14 @@
   <data name="nr_lan" xml:space="preserve">
     <value>zh-hans</value>
     <comment>Language code</comment>
+  </data>
+  <data name="nr_5" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>启用</value>
   </data>
 </root>

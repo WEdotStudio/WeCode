@@ -2,7 +2,7 @@
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Developer_Hub_For_UWP.Pages;
-using Core;
+using Core.Network;
 using Core.DataModel;
 using Core.ViewModel;
 using Windows.UI.ViewManagement;
@@ -65,15 +65,25 @@ namespace Developer_Hub_For_UWP
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
                 _localSettings.Containers["Settings"].Values["IsFonticonExtraFileDownloaded"] = false;
+                _localSettings.Containers["Settings"].Values["Version"] = "020200";
 
                 DelLegacyHistory();
                 TransferToStorage();
             }
+            else if(_localSettings.Containers["Settings"].Values["Version"] != "020200")
+            {
+                _localSettings.Containers["Settings"].Values["Version"] = "020200";
+                _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
+            }
             var conetvty = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
             bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
+            bool PopupDisabled = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"]);
             if (conetvty == NetworkConnectivityLevel.InternetAccess)
-            {  
-                if (PopIgnored == true ) CheckUpdate();
+            {
+                if (!PopupDisabled)
+                {
+                    if(!PopIgnored) CheckUpdate();
+                }
                 UpdateInsidetenApi();
             }           
 
@@ -94,19 +104,23 @@ namespace Developer_Hub_For_UWP
         }
         private async void UpdateInsidetenApi()
         {
-             await Network.DownloadFile("http://insideten.xyz/api.json", 1);
+            await UrlPhraser.ReachFile("http://insideten.xyz/api.json", Response.DownloadToLocalFolder);
         }
         private async void CheckUpdate()
         {
+            string url = "http://ap.westudio.ml/sources/json/wecode-update.json";
+#if DEBUG
+            url = "http://ap.westudio.ml/sources/json/wecode-update-test.json";
+#endif
             var client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(new Uri("http://ap.westudio.ml/sources/json/wecode-update.json"));
+            HttpResponseMessage response = await client.GetAsync(new Uri(url));
 
             var jsonString = await response.Content.ReadAsStringAsync();
             Update.RootObject data = JsonConvert.DeserializeObject<Update.RootObject>(jsonString);
             string version = data.version;
             string[] versionnum = version.Split('.');
             int versioncount = Convert.ToInt32(versionnum[0]) * 10000 + Convert.ToInt32(versionnum[1]) * 100 + Convert.ToInt32(versionnum[2]);
-            if (versioncount > 20005)
+            if (versioncount > 20200)
             {
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
                 HttpResponseMessage detailstring;
@@ -146,11 +160,14 @@ namespace Developer_Hub_For_UWP
                              " arguments = 'ms-windows-store://pdp/?ProductId=9nblggh5p90f' />" +
                              "<action" +
                              " content = '{5}'" +
-                             " activationType='system'"+
+                             " arguments = 'action=disableNoti' />" +
+                             "<action" +
+                             " content = '{6}'" +
+                             " activationType='system'" +
                              " arguments = 'dismiss' />" +
                          "</actions>" +
                     "</toast>",
-                     loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_4")
+                     loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_5"), loader.GetString("nr_4")
                 );
                 xdoc.LoadXml(xmlContent);
                 ToastNotification toast1 = new ToastNotification(xdoc);
