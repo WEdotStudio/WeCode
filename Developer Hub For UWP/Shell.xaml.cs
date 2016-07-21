@@ -65,17 +65,25 @@ namespace Developer_Hub_For_UWP
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
                 _localSettings.Containers["Settings"].Values["IsFonticonExtraFileDownloaded"] = false;
+                _localSettings.Containers["Settings"].Values["Version"] = "020200";
 
                 DelLegacyHistory();
                 TransferToStorage();
             }
+            else if(_localSettings.Containers["Settings"].Values["Version"] != "020200")
+            {
+                _localSettings.Containers["Settings"].Values["Version"] = "020200";
+                _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
+            }
             var conetvty = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
             bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
             bool PopupDisabled = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"]);
-            bool PopupShow = (PopIgnored == false) || (PopupDisabled == false) || ((PopIgnored == false) && (PopupDisabled == false));
             if (conetvty == NetworkConnectivityLevel.InternetAccess)
-            {  
-                if (PopupShow) CheckUpdate();
+            {
+                if (!PopupDisabled)
+                {
+                    if(!PopIgnored) CheckUpdate();
+                }
                 UpdateInsidetenApi();
             }           
 
@@ -152,11 +160,14 @@ namespace Developer_Hub_For_UWP
                              " arguments = 'ms-windows-store://pdp/?ProductId=9nblggh5p90f' />" +
                              "<action" +
                              " content = '{5}'" +
-                             " activationType='system'"+
+                             " arguments = 'action=disableNoti' />" +
+                             "<action" +
+                             " content = '{6}'" +
+                             " activationType='system'" +
                              " arguments = 'dismiss' />" +
                          "</actions>" +
                     "</toast>",
-                     loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_4")
+                     loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_5"), loader.GetString("nr_4")
                 );
                 xdoc.LoadXml(xmlContent);
                 ToastNotification toast1 = new ToastNotification(xdoc);

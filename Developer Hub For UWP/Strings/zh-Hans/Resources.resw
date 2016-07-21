@@ -453,4 +453,13 @@
     <value>zh-hans</value>
     <comment>Language code</comment>
   </data>
+  <data name="nr_5" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>启用</value>
+  </data>
 </root>

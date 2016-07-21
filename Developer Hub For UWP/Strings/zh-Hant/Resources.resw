@@ -454,4 +454,13 @@ Fuzzy</comment>
     <value>zh-hant</value>
     <comment>Language code</comment>
   </data>
+  <data name="nr_5" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>開啟</value>
+  </data>
 </root>
