@@ -164,8 +164,6 @@ namespace Developer_Hub_For_UWP.Pages
                 await new MessageDialog(loader.GetString("ErrCho")).ShowAsync();
             }
         }
-
-
        
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)

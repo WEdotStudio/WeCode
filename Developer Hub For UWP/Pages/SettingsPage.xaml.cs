@@ -32,6 +32,9 @@ namespace Developer_Hub_For_UWP.Pages
             await new MessageDialog(loader.GetString("CMess")).ShowAsync();
         }
 
-           
+        private void txt_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }
