@@ -4,7 +4,6 @@ using Windows.UI.Xaml.Controls;
 using Developer_Hub_For_UWP.Pages;
 using Core.Network;
 using Core.DataModel;
-using Core.ViewModel;
 using Windows.UI.ViewManagement;
 using Windows.UI;
 using Windows.System;
@@ -15,7 +14,7 @@ using Windows.Data.Xml.Dom;
 using Newtonsoft.Json;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
-using System.IO;
+using Developer_Hub_For_UWP.Presentation;
 
 namespace Developer_Hub_For_UWP
 {
@@ -70,7 +69,7 @@ namespace Developer_Hub_For_UWP
                 TransferToStorage();
             }
             //if update
-            else if(_localSettings.Containers["Settings"].Values["Version"] != "020200")
+            else if((string)_localSettings.Containers["Settings"].Values["Version"] != "020200")
             {
                 _localSettings.Containers["Settings"].Values["Version"] = "020200";
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;

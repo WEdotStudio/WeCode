@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 
-namespace Core.ViewModel
+namespace Developer_Hub_For_UWP.Presentation
 {
     public class ShellViewModel : NotifyPropertyChanged
     {
