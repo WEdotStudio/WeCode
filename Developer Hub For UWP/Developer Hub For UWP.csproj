@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>Developer Hub For UWP_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>D8C3E2F12520697A7E2D8D7AB8CA28809A664A2C</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <AppxBundle>Auto</AppxBundle>
+    <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
