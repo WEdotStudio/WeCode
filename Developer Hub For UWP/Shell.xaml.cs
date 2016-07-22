@@ -58,11 +58,10 @@ namespace Developer_Hub_For_UWP
             // select the first top item
             vm.SelectedItem = vm.TopItems.First();
             this.ViewModel = vm;
-
+            //if new download
             if (!_localSettings.Containers.ContainsKey("Settings"))
             {
                 ApplicationDataContainer container = _localSettings.CreateContainer("Settings", ApplicationDataCreateDisposition.Always);
-                _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
                 _localSettings.Containers["Settings"].Values["IsFonticonExtraFileDownloaded"] = false;
                 _localSettings.Containers["Settings"].Values["Version"] = "020200";
@@ -70,20 +69,19 @@ namespace Developer_Hub_For_UWP
                 DelLegacyHistory();
                 TransferToStorage();
             }
+            //if update
             else if(_localSettings.Containers["Settings"].Values["Version"] != "020200")
             {
                 _localSettings.Containers["Settings"].Values["Version"] = "020200";
-                _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = false;
+                _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
             }
+            // whether the internet is connected.
             var conetvty = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
             bool PopIgnored = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"]);
             bool PopupDisabled = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"]);
             if (conetvty == NetworkConnectivityLevel.InternetAccess)
             {
-                if (!PopupDisabled)
-                {
-                    if(!PopIgnored) CheckUpdate();
-                }
+                if (!PopupDisabled) CheckUpdate();
                 UpdateInsidetenApi();
             }           
 

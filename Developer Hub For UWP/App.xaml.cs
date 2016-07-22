@@ -44,7 +44,7 @@ namespace Developer_Hub_For_UWP
                 switch(arg[1])
                 {
                     case "disableNoti":
-                        _localSettings.Containers["Settings"].Values["IsUpdatePopupIgnored"] = true;
+                        _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = true;
                         break;
                 }
                 // Navigate accordingly

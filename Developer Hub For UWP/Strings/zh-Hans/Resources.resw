@@ -450,4 +450,7 @@
   <data name="on" xml:space="preserve">
     <value>启用</value>
   </data>
+  <data name="IsUpdatePopupDisabled" xml:space="preserve">
+    <value>不再彈出更新提示</value>
+  </data>
 </root>

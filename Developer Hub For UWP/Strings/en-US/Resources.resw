@@ -450,4 +450,7 @@
   <data name="on" xml:space="preserve">
     <value>On</value>
   </data>
+  <data name="IsUpdatePopupDisabled" xml:space="preserve">
+    <value>Do not Prompt Update Notification</value>
+  </data>
 </root>
