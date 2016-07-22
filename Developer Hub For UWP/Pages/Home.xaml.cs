@@ -1,9 +1,8 @@
-﻿using Developer_Hub_For_UWP.Presentation;
+﻿using Core.DataModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using Windows.ApplicationModel.Core;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.Storage;
@@ -12,9 +11,7 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using static Developer_Hub_For_UWP.Presentation.insideten;
-
-//
+using static Core.DataModel.insideten;
 
 namespace Developer_Hub_For_UWP.Pages
 {
@@ -26,14 +23,14 @@ namespace Developer_Hub_For_UWP.Pages
         {
             this.InitializeComponent();
             _localSettings = ApplicationData.Current.LocalSettings;
-
+            
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             title.Text = loader.GetString("LBI");
 
             UpdateBuildInfo();
             InitializeIconHistoryList();
         }
-
+        
         private async void InitializeIconHistoryList()
         {
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
@@ -44,13 +41,13 @@ namespace Developer_Hub_For_UWP.Pages
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {
-                        List<IconHistory> Items = new List<IconHistory>();
+                        List<Character> Items = new List<Character>();
 
                         while (!reader.EndOfStream)
                         {
                             var line = reader.ReadLine();
                             var values = line.Split(',');
-                            Items.Add(new IconHistory { Name = values[0], Graph = values[1] });
+                            Items.Add(new Character{ Font = values[0], Char = values[1], UnicodeIndex=Convert.ToInt32(values[2])});
                         }
                         Items.Reverse();
                         if(Items.Count == 0)
@@ -75,19 +72,20 @@ namespace Developer_Hub_For_UWP.Pages
         }
         private async void UpdateBuildInfo()
         {
+            //System Version
             string sv = AnalyticsInfo.VersionInfo.DeviceFamilyVersion;
             ulong v = ulong.Parse(sv);
             ulong v3 = (v & 0x00000000FFFF0000L) >> 16;
             bu.Text = $"{v3}";
 
+            //System Info
             EasClientDeviceInformation eas = new EasClientDeviceInformation();
             ma.Text = eas.SystemManufacturer+" "+ eas.SystemProductName;
 
-            var client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(new Uri("http://insideten.xyz/api.json"));
-
-            var jsonString = await response.Content.ReadAsStringAsync();
-            //if(!_localSettings.Containers.)
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile jsonFile = await localFolder.GetFileAsync("api.json");
+            var jsonString = await FileIO.ReadTextAsync(jsonFile);
+            
             RootObject data = JsonConvert.DeserializeObject<RootObject>(jsonString);
             Build_v.Text = data.@internal.build;
         }
@@ -101,8 +99,7 @@ namespace Developer_Hub_For_UWP.Pages
         private async void gridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            IconHistory output = e.ClickedItem as IconHistory;
-            string selectInfo = output.Graph;
+            Character output = e.ClickedItem as Character;
             var currentAV = ApplicationView.GetForCurrentView();
             var newAV = CoreApplication.CreateNewView();
             await newAV.Dispatcher.RunAsync(
@@ -112,10 +109,10 @@ namespace Developer_Hub_For_UWP.Pages
                                 var newWindow = Window.Current;
                                 var newAppView = ApplicationView.GetForCurrentView();
 
-                                newAppView.Title = selectInfo + loader.GetString("Detail");
+                                newAppView.Title = loader.GetString("Details");
 
                                 var frame = new Frame();
-                                frame.Navigate(typeof(Browser), selectInfo);
+                                frame.Navigate(typeof(Browser), output);
                                 newWindow.Content = frame;
                                 newWindow.Activate();
 

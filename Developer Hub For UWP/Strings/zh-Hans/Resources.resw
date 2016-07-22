@@ -125,15 +125,7 @@
     <value>视觉资产(Visual Assets)生成器</value>
     <comment>Visual Assets Generator</comment>
   </data>
-  <data name="Cp1.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp2.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp3.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="copy" xml:space="preserve">
     <value>复制</value>
     <comment>Copy</comment>
   </data>
@@ -162,7 +154,7 @@
     <comment>Remarks:</comment>
   </data>
   <data name="SMI" xml:space="preserve">
-    <value>Segoe MDL2 Assets 字体图标浏览器</value>
+    <value>字体图标浏览器</value>
     <comment>Segoe MDL2 icons</comment>
   </data>
   <data name="Test.Content" xml:space="preserve">
@@ -314,7 +306,7 @@
     <comment>Settings</comment>
   </data>
   <data name="SMIt.Text" xml:space="preserve">
-    <value>Segoe MDL2 Assets 字体图标浏览器</value>
+    <value>字体图标浏览器</value>
     <comment>Segoe MDL2 Assets Icons Browser</comment>
   </data>
   <data name="Btn1.ToolTipService.ToolTip" xml:space="preserve">
@@ -365,10 +357,6 @@
     <value>设置</value>
     <comment>Settings</comment>
   </data>
-  <data name="Cp4.ToolTipService.ToolTip" xml:space="preserve">
-    <value>复制</value>
-    <comment>Copy</comment>
-  </data>
   <data name="FI.Text" xml:space="preserve">
     <value>字体图标</value>
     <comment>Fonticon</comment>
@@ -377,7 +365,7 @@
     <value>最新内部预览版本</value>
   </data>
   <data name="rusmai.Text" xml:space="preserve">
-    <value>最近使用的Segoe MDL2 Assets字体图标</value>
+    <value>最近使用的字体图标</value>
   </data>
   <data name="welcome.Text" xml:space="preserve">
     <value>欢迎，开发者</value>
@@ -412,7 +400,7 @@
     <comment>PC Ring</comment>
   </data>
   <data name="sma.Content" xml:space="preserve">
-    <value>Segoe MDL2 Assets字体图标</value>
+    <value>字体图标</value>
   </data>
   <data name="uri.Content" xml:space="preserve">
     <value>URI</value>
@@ -428,5 +416,41 @@
   </data>
   <data name="libs.Content" xml:space="preserve">
     <value>库</value>
+  </data>
+  <data name="CmbFontFamily.PlaceholderText" xml:space="preserve">
+    <value>----选择一种图标字体----</value>
+    <comment>----Choose a Font----</comment>
+  </data>
+  <data name="nr_1" xml:space="preserve">
+    <value>更新</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_2" xml:space="preserve">
+    <value>已发布！</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_3" xml:space="preserve">
+    <value>立即更新</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_4" xml:space="preserve">
+    <value>之后再说</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_lan" xml:space="preserve">
+    <value>zh-hans</value>
+    <comment>Language code</comment>
+  </data>
+  <data name="nr_5" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="IsUpdatePopupDisabled" xml:space="preserve">
+    <value>不再彈出更新提示</value>
   </data>
 </root>

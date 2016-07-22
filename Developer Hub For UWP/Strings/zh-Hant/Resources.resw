@@ -125,15 +125,7 @@
     <value>視覺資產(Visual Assets)生成器</value>
     <comment>Visual Assets Generator</comment>
   </data>
-  <data name="Cp1.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp2.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp3.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="copy" xml:space="preserve">
     <value>複製</value>
     <comment>Copy</comment>
   </data>
@@ -162,7 +154,7 @@
     <comment>Remarks:</comment>
   </data>
   <data name="SMI" xml:space="preserve">
-    <value>Segoe MDL2 Assets 字形圖標瀏覽器</value>
+    <value>字形圖標瀏覽器</value>
     <comment>Segoe MDL2 icons</comment>
   </data>
   <data name="Test.Content" xml:space="preserve">
@@ -315,7 +307,7 @@ Fuzzy</comment>
     <comment>Settings</comment>
   </data>
   <data name="SMIt.Text" xml:space="preserve">
-    <value>Segoe MDL2 Assets 字形圖標瀏覽器</value>
+    <value>字形圖標瀏覽器</value>
     <comment>Segoe MDL2 Assets Icons Browser</comment>
   </data>
   <data name="Btn1.ToolTipService.ToolTip" xml:space="preserve">
@@ -366,10 +358,6 @@ Fuzzy</comment>
     <value>設置</value>
     <comment>Settings</comment>
   </data>
-  <data name="Cp4.ToolTipService.ToolTip" xml:space="preserve">
-    <value>複製</value>
-    <comment>Copy</comment>
-  </data>
   <data name="FI.Text" xml:space="preserve">
     <value>字形圖標</value>
     <comment>Fonticon</comment>
@@ -378,7 +366,7 @@ Fuzzy</comment>
     <value>最新預覽版</value>
   </data>
   <data name="rusmai.Text" xml:space="preserve">
-    <value>Segoe MDL2 Assets字形圖標最近使用</value>
+    <value>字形圖標最近使用</value>
   </data>
   <data name="welcome.Text" xml:space="preserve">
     <value>歡迎,開發者</value>
@@ -413,7 +401,7 @@ Fuzzy</comment>
     <comment>PC Ring</comment>
   </data>
   <data name="sma.Content" xml:space="preserve">
-    <value>Segoe MDL2 Assets字形圖標</value>
+    <value>字形圖標</value>
   </data>
   <data name="uri.Content" xml:space="preserve">
     <value>URI</value>
@@ -429,5 +417,41 @@ Fuzzy</comment>
   </data>
   <data name="libs.Content" xml:space="preserve">
     <value>函式庫</value>
+  </data>
+  <data name="CmbFontFamily.PlaceholderText" xml:space="preserve">
+    <value>----選擇一種圖標字型----</value>
+    <comment>----Choose a Font----</comment>
+  </data>
+  <data name="nr_1" xml:space="preserve">
+    <value>更新</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_2" xml:space="preserve">
+    <value>已發布!</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_3" xml:space="preserve">
+    <value>立即更新</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_4" xml:space="preserve">
+    <value>等下再說</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_lan" xml:space="preserve">
+    <value>zh-hant</value>
+    <comment>Language code</comment>
+  </data>
+  <data name="nr_5" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="IsUpdatePopupDisabled" xml:space="preserve">
+    <value>不再弹出更新提示提醒</value>
   </data>
 </root>

@@ -1,7 +1,7 @@
-﻿namespace Developer_Hub_For_UWP.Presentation
+﻿namespace Core.DataModel
 {
 
-    class insideten
+    public class insideten
     {
         public static string add_format(string address)
         {
@@ -10,7 +10,7 @@
             else if (address.StartsWith("blogs")) address = "https://" + address;
             return address;
         }
-        public class Pcwrp
+        public class pcwrp
         {
             public string build { get; set; }
             public string version { get; set; }
@@ -18,7 +18,7 @@
             public string release_date { get; set; }
         }
 
-        public class Pcwif
+        public class pcwif
         {
             public string build { get; set; }
             public string version { get; set; }
@@ -26,7 +26,7 @@
             public string release_date { get; set; }
         }
 
-        public class Pcwis
+        public class pcwis
         {
             public string build { get; set; }
             public string version { get; set; }
@@ -34,7 +34,7 @@
             public string release_date { get; set; }
         }
 
-        public class Mowrp
+        public class mowrp
         {
             public string build { get; set; }
             public string version { get; set; }
@@ -42,7 +42,7 @@
             public string release_date { get; set; }
         }
 
-        public class Mowif
+        public class mowif
         {
             public string build { get; set; }
             public string version { get; set; }
@@ -50,7 +50,7 @@
             public string release_date { get; set; }
         }
 
-        public class Mowis
+        public class mowis
         {
             public string build { get; set; }
             public string version { get; set; }
@@ -61,18 +61,28 @@
         public class Internal
         {
             public string build { get; set; }
-            public string source { get; set; }
+            public string version { get; set; }
+            public string more { get; set; }
+            public string release_date { get; set; }
+        }
+        public class internalservice
+        {
+            public string build { get; set; }
+            public string version { get; set; }
+            public string more { get; set; }
+            public string release_date { get; set; }
         }
 
         public class RootObject
         {
-            public Pcwrp pcwrp { get; set; }
-            public Pcwif pcwif { get; set; }
-            public Pcwis pcwis { get; set; }
-            public Mowrp mowrp { get; set; }
-            public Mowif mowif { get; set; }
-            public Mowis mowis { get; set; }
+            public pcwrp pcwrp { get; set; }
+            public pcwif pcwif { get; set; }
+            public pcwis pcwis { get; set; }
+            public mowrp mowrp { get; set; }
+            public mowif mowif { get; set; }
+            public mowis mowis { get; set; }
             public Internal @internal { get; set; }
+            public internalservice internalservice { get; set; }
         }
     }
 }

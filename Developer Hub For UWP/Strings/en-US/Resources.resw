@@ -125,15 +125,7 @@
     <value>Visual Assets Generator</value>
     <comment>Visual Assets Generator</comment>
   </data>
-  <data name="Cp1.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Copy</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp2.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Copy</value>
-    <comment>Copy</comment>
-  </data>
-  <data name="Cp3.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="copy" xml:space="preserve">
     <value>Copy</value>
     <comment>Copy</comment>
   </data>
@@ -162,7 +154,7 @@
     <comment>Remarks:</comment>
   </data>
   <data name="SMI" xml:space="preserve">
-    <value>Segoe MDL2 Assets Icons Browser</value>
+    <value>Fonticon Browser</value>
     <comment>Segoe MDL2 icons</comment>
   </data>
   <data name="Test.Content" xml:space="preserve">
@@ -314,7 +306,7 @@
     <comment>Settings</comment>
   </data>
   <data name="SMIt.Text" xml:space="preserve">
-    <value>Segoe MDL2 Assets Icons Browser</value>
+    <value>Fonticon Browser</value>
     <comment>Segoe MDL2 Assets Icons Browser</comment>
   </data>
   <data name="Btn1.ToolTipService.ToolTip" xml:space="preserve">
@@ -365,10 +357,6 @@
     <value>Settings</value>
     <comment>Settings</comment>
   </data>
-  <data name="Cp4.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Copy</value>
-    <comment>Copy</comment>
-  </data>
   <data name="FI.Text" xml:space="preserve">
     <value>Fonticon</value>
     <comment>Fonticon</comment>
@@ -377,7 +365,7 @@
     <value>Latest Internal Build</value>
   </data>
   <data name="rusmai.Text" xml:space="preserve">
-    <value>Recently Used Segoe MDL2 Assets Icon</value>
+    <value>Recently Used Fonticon</value>
   </data>
   <data name="welcome.Text" xml:space="preserve">
     <value>Hello, developer</value>
@@ -412,7 +400,7 @@
     <comment>PC Ring</comment>
   </data>
   <data name="sma.Content" xml:space="preserve">
-    <value>Segoe MDL2 Assets</value>
+    <value>Fonticons</value>
   </data>
   <data name="uri.Content" xml:space="preserve">
     <value>URI</value>
@@ -428,5 +416,41 @@
   </data>
   <data name="libs.Content" xml:space="preserve">
     <value>Libraries</value>
+  </data>
+  <data name="CmbFontFamily.PlaceholderText" xml:space="preserve">
+    <value>----Choose a Font----</value>
+    <comment>----Choose a Font----</comment>
+  </data>
+  <data name="nr_1" xml:space="preserve">
+    <value>Version</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_2" xml:space="preserve">
+    <value>Released!</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_3" xml:space="preserve">
+    <value>Update Now</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_4" xml:space="preserve">
+    <value>Maybe Later</value>
+    <comment>New Release Notification</comment>
+  </data>
+  <data name="nr_lan" xml:space="preserve">
+    <value>en</value>
+    <comment>Language code</comment>
+  </data>
+  <data name="nr_5" xml:space="preserve">
+    <value>Ingore</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="IsUpdatePopupDisabled" xml:space="preserve">
+    <value>Do not Prompt Update Notification</value>
   </data>
 </root>

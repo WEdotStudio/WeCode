@@ -1,11 +1,11 @@
 ﻿using System;
-using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
+using Core;
 
 namespace Developer_Hub_For_UWP.Pages
 {
@@ -73,82 +73,82 @@ namespace Developer_Hub_For_UWP.Pages
                     StorageFolder newFolder = await folder.CreateFolderAsync(Stor.Text);
                     if (s44L.IsChecked == true)
                     {
-                        Resize("Square44x44Logo.scale-400.png", 176, 176, StoredFile1, newFolder);
-                        Resize("Square44x44Logo.scale-200.png", 88, 88, StoredFile1, newFolder);
-                        Resize("Square44x44Logo.scale-150.png", 66, 66, StoredFile1, newFolder);
-                        Resize("Square44x44Logo.scale-125.png", 55, 55, StoredFile1, newFolder);
-                        Resize("Square44x44Logo.scale-100.png", 44, 44, StoredFile1, newFolder);
+                        await Generator.Resizer("Square44x44Logo.scale-400.png", 176, 176, StoredFile1, newFolder);
+                        await Generator.Resizer("Square44x44Logo.scale-200.png", 88, 88, StoredFile1, newFolder);
+                        await Generator.Resizer("Square44x44Logo.scale-150.png", 66, 66, StoredFile1, newFolder);
+                        await Generator.Resizer("Square44x44Logo.scale-125.png", 55, 55, StoredFile1, newFolder);
+                        await Generator.Resizer("Square44x44Logo.scale-100.png", 44, 44, StoredFile1, newFolder);
                         if (s44TL.IsChecked == true)
                         {
-                            Resize("Square44x44Logo.targetsize-256.png", 256, 256, StoredFile1, newFolder);
-                            Resize("Square44x44Logo.targetsize-48.png", 48, 48, StoredFile1, newFolder);
-                            Resize("Square44x44Logo.targetsize-24.png", 24, 24, StoredFile1, newFolder);
-                            Resize("Square44x44Logo.targetsize-16.png", 16, 16, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-256.png", 256, 256, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-48.png", 48, 48, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-24.png", 24, 24, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-16.png", 16, 16, StoredFile1, newFolder);
 
                         }
                         if (s44uTL.IsChecked == true)
                         {
-                            Resize("Square44x44Logo.targetsize-256_altform-unplated.png", 256, 256, StoredFile1, newFolder);
-                            Resize("Square44x44Logo.targetsize-48_altform-unplated.png", 48, 48, StoredFile1, newFolder);
-                            Resize("Square44x44Logo.targetsize-24_altform-unplated.png", 24, 24, StoredFile1, newFolder);
-                            Resize("Square44x44Logo.targetsize-16_altform-unplated.png", 16, 16, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-256_altform-unplated.png", 256, 256, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-48_altform-unplated.png", 48, 48, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-24_altform-unplated.png", 24, 24, StoredFile1, newFolder);
+                            await Generator.Resizer("Square44x44Logo.targetsize-16_altform-unplated.png", 16, 16, StoredFile1, newFolder);
                         }
                     }
                     if (s71L.IsChecked == true)
                     {
-                        Resize("Square71x71Logo.scale-400.png", 284, 284, StoredFile1, newFolder);
-                        Resize("Square71x71Logo.scale-200.png", 142, 142, StoredFile1, newFolder);
-                        Resize("Square71x71Logo.scale-150.png", 107, 107, StoredFile1, newFolder);
-                        Resize("Square71x71Logo.scale-125.png", 89, 89, StoredFile1, newFolder);
-                        Resize("Square71x71Logo.scale-100.png", 71, 71, StoredFile1, newFolder);
+                        await Generator.Resizer("Square71x71Logo.scale-400.png", 284, 284, StoredFile1, newFolder);
+                        await Generator.Resizer("Square71x71Logo.scale-200.png", 142, 142, StoredFile1, newFolder);
+                        await Generator.Resizer("Square71x71Logo.scale-150.png", 107, 107, StoredFile1, newFolder);
+                        await Generator.Resizer("Square71x71Logo.scale-125.png", 89, 89, StoredFile1, newFolder);
+                        await Generator.Resizer("Square71x71Logo.scale-100.png", 71, 71, StoredFile1, newFolder);
                     }
                     if (mL.IsChecked == true)
                     {
-                        Resize("Square150x150Logo.scale-400.png", 600, 600, StoredFile1, newFolder);
-                        Resize("Square150x150Logo.scale-200.png", 300, 300, StoredFile1, newFolder);
-                        Resize("Square150x150Logo.scale-150.png", 225, 225, StoredFile1, newFolder);
-                        Resize("Square150x150Logo.scale-125.png", 188, 188, StoredFile1, newFolder);
-                        Resize("Square150x150Logo.scale-100.png", 150, 150, StoredFile1, newFolder);
+                        await Generator.Resizer("Square150x150Logo.scale-400.png", 600, 600, StoredFile1, newFolder);
+                        await Generator.Resizer("Square150x150Logo.scale-200.png", 300, 300, StoredFile1, newFolder);
+                        await Generator.Resizer("Square150x150Logo.scale-150.png", 225, 225, StoredFile1, newFolder);
+                        await Generator.Resizer("Square150x150Logo.scale-125.png", 188, 188, StoredFile1, newFolder);
+                        await Generator.Resizer("Square150x150Logo.scale-100.png", 150, 150, StoredFile1, newFolder);
                     }
                     if (wL.IsChecked == true)
                     {
-                        Resize("Wide310x150Logo.scale-400.png", 600, 1240, StoredFile2, newFolder);
-                        Resize("Wide310x150Logo.scale-200.png", 300, 620, StoredFile2, newFolder);
-                        Resize("Wide310x150Logo.scale-150.png", 225, 465, StoredFile2, newFolder);
-                        Resize("Wide310x150Logo.scale-125.png", 188, 388, StoredFile2, newFolder);
-                        Resize("Wide310x150Logo.scale-100.png", 150, 310, StoredFile2, newFolder);
+                        await Generator.Resizer("Wide310x150Logo.scale-400.png", 600, 1240, StoredFile2, newFolder);
+                        await Generator.Resizer("Wide310x150Logo.scale-200.png", 300, 620, StoredFile2, newFolder);
+                        await Generator.Resizer("Wide310x150Logo.scale-150.png", 225, 465, StoredFile2, newFolder);
+                        await Generator.Resizer("Wide310x150Logo.scale-125.png", 188, 388, StoredFile2, newFolder);
+                        await Generator.Resizer("Wide310x150Logo.scale-100.png", 150, 310, StoredFile2, newFolder);
                     }
                     if (lL.IsChecked == true)
                     {
-                        Resize("Square310x310Logo.scale-400.png", 1240, 1240, StoredFile1, newFolder);
-                        Resize("Square310x310Logo.scale-200.png", 620, 620, StoredFile1, newFolder);
-                        Resize("Square310x310Logo.scale-150.png", 465, 465, StoredFile1, newFolder);
-                        Resize("Square310x310Logo.scale-125.png", 388, 388, StoredFile1, newFolder);
-                        Resize("Square310x310Logo.scale-100.png", 310, 310, StoredFile1, newFolder);
+                        await Generator.Resizer("Square310x310Logo.scale-400.png", 1240, 1240, StoredFile1, newFolder);
+                        await Generator.Resizer("Square310x310Logo.scale-200.png", 620, 620, StoredFile1, newFolder);
+                        await Generator.Resizer("Square310x310Logo.scale-150.png", 465, 465, StoredFile1, newFolder);
+                        await Generator.Resizer("Square310x310Logo.scale-125.png", 388, 388, StoredFile1, newFolder);
+                        await Generator.Resizer("Square310x310Logo.scale-100.png", 310, 310, StoredFile1, newFolder);
                     }
                     if (sL.IsChecked == true)
                     {
-                        Resize("StoreLogo.scale-400.png", 200, 200, StoredFile1, newFolder);
-                        Resize("StoreLogo.scale-200.png", 100, 100, StoredFile1, newFolder);
-                        Resize("StoreLogo.scale-150.png", 75, 75, StoredFile1, newFolder);
-                        Resize("StoreLogo.scale-125.png", 63, 63, StoredFile1, newFolder);
-                        Resize("StoreLogo.scale-100.png", 50, 50, StoredFile1, newFolder);
+                        await Generator.Resizer("StoreLogo.scale-400.png", 200, 200, StoredFile1, newFolder);
+                        await Generator.Resizer("StoreLogo.scale-200.png", 100, 100, StoredFile1, newFolder);
+                        await Generator.Resizer("StoreLogo.scale-150.png", 75, 75, StoredFile1, newFolder);
+                        await Generator.Resizer("StoreLogo.scale-125.png", 63, 63, StoredFile1, newFolder);
+                        await Generator.Resizer("StoreLogo.scale-100.png", 50, 50, StoredFile1, newFolder);
                     }
                     if (bL.IsChecked == true)
                     {
-                        Resize("BadgeLogo.scale-400.png", 96, 96, StoredFile1, newFolder);
-                        Resize("BadgeLogo.scale-200.png", 48, 48, StoredFile1, newFolder);
-                        Resize("BadgeLogo.scale-150.png", 36, 36, StoredFile1, newFolder);
-                        Resize("BadgeLogo.scale-125.png", 30, 30, StoredFile1, newFolder);
-                        Resize("BadgeLogo.scale-100.png", 24, 24, StoredFile1, newFolder);
+                        await Generator.Resizer("BadgeLogo.scale-400.png", 96, 96, StoredFile1, newFolder);
+                        await Generator.Resizer("BadgeLogo.scale-200.png", 48, 48, StoredFile1, newFolder);
+                        await Generator.Resizer("BadgeLogo.scale-150.png", 36, 36, StoredFile1, newFolder);
+                        await Generator.Resizer("BadgeLogo.scale-125.png", 30, 30, StoredFile1, newFolder);
+                        await Generator.Resizer("BadgeLogo.scale-100.png", 24, 24, StoredFile1, newFolder);
                     }
                     if (sS.IsChecked == true)
                     {
-                        Resize("SplashScreen.scale-400.png", 1200, 2480, StoredFile2, newFolder);
-                        Resize("SplashScreen.scale-200.png", 600, 1240, StoredFile2, newFolder);
-                        Resize("SplashScreen.scale-150.png", 450, 930, StoredFile2, newFolder);
-                        Resize("SplashScreen.scale-125.png", 375, 775, StoredFile2, newFolder);
-                        Resize("SplashScreen.scale-100.png", 300, 620, StoredFile2, newFolder);
+                        await Generator.Resizer("SplashScreen.scale-400.png", 1200, 2480, StoredFile2, newFolder);
+                        await Generator.Resizer("SplashScreen.scale-200.png", 600, 1240, StoredFile2, newFolder);
+                        await Generator.Resizer("SplashScreen.scale-150.png", 450, 930, StoredFile2, newFolder);
+                        await Generator.Resizer("SplashScreen.scale-125.png", 375, 775, StoredFile2, newFolder);
+                        await Generator.Resizer("SplashScreen.scale-100.png", 300, 620, StoredFile2, newFolder);
 
 
                     }
@@ -164,30 +164,7 @@ namespace Developer_Hub_For_UWP.Pages
                 await new MessageDialog(loader.GetString("ErrCho")).ShowAsync();
             }
         }
-
-
-        public async void Resize(String name, uint hsize, uint wsize, StorageFile file,StorageFolder folder)
-        {
-            StorageFile newFile = await folder.CreateFileAsync(name);
-            using (var sourceStream = await file.OpenAsync(FileAccessMode.Read))
-            {
-                BitmapDecoder decoder = await BitmapDecoder.CreateAsync(sourceStream);
-                BitmapTransform transform = new BitmapTransform() { ScaledHeight = hsize, ScaledWidth = wsize };
-                PixelDataProvider pixelData = await decoder.GetPixelDataAsync(
-                    BitmapPixelFormat.Rgba8,
-                    BitmapAlphaMode.Straight,
-                    transform,
-                    ExifOrientationMode.RespectExifOrientation,
-                    ColorManagementMode.DoNotColorManage);
-
-                using (var destinationStream = await newFile.OpenAsync(FileAccessMode.ReadWrite))
-                {
-                    BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, destinationStream);
-                    encoder.SetPixelData(BitmapPixelFormat.Rgba8, BitmapAlphaMode.Premultiplied, wsize, hsize, 100, 100, pixelData.DetachPixelData());
-                    await encoder.FlushAsync();
-                }
-            }
-        }
+       
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {

@@ -3,8 +3,10 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation.Metadata;
 using Windows.Phone.UI.Input;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace Developer_Hub_For_UWP
@@ -24,10 +26,31 @@ namespace Developer_Hub_For_UWP
             this.Suspending += OnSuspending;
         }
 
-       
+
         protected override void OnActivated(IActivatedEventArgs args)
         {
-            base.OnActivated(args);
+            // TODO: Initialize root frame just like in OnLaunched
+
+            // Handle toast activation
+            if (args.Kind == ActivationKind.ToastNotification)
+            {
+                var toastArgs = args as ToastNotificationActivatedEventArgs;
+                ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
+                // Get arguments corresponding to this activation;
+                // When tapping the body of the toast caused this activation, the app receives the value of “launch” property of ;
+                // When the activation is caused by using tapping on an action inside the toast, the app receives the value of “arguments” property of ; 
+                var arguments = toastArgs.Argument;
+                string[] arg = arguments.Split(Convert.ToChar("="));
+                switch(arg[1])
+                {
+                    case "disableNoti":
+                        _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = true;
+                        break;
+                }
+                // Navigate accordingly
+            }
+
+            // TODO: Handle other types of activation
         }
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -44,9 +67,10 @@ namespace Developer_Hub_For_UWP
                 //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-
             var shell = Window.Current.Content as Shell;
-
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (shell == null)
@@ -57,11 +81,7 @@ namespace Developer_Hub_For_UWP
                 // hook-up shell root frame navigation events
                 shell.RootFrame.NavigationFailed += OnNavigationFailed;
                 shell.RootFrame.Navigated += OnNavigated;
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: Load state from previously suspended application
-                }
+     
 
                 // set the Shell as content
                 Window.Current.Content = shell;

@@ -24,9 +24,9 @@
             </Grid>
             <Grid Margin="20,20,0,20">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
 
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -46,22 +46,22 @@
                 <TextBlock  Grid.Row="2" Grid.Column="1" x:Name="Ucode" FontSize="20" Foreground="Black"/>
                 <TextBlock  Grid.Row="3" Grid.Column="1" x:Name="FiconS" FontSize="20" Foreground="Black"/>
                 <TextBlock  Grid.Row="4" Grid.Column="1" x:Name="Rm" Text="Outlined heart" Foreground="Black" FontSize="20"/>
-                <Button x:Uid="Cp1" Grid.Row="0" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click" ToolTipService.ToolTip="Copy">
+                <Button x:Name="Cp1" Grid.Row="0" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click" >
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8C8;"/>
                     </Button.Content>
                 </Button>
-                <Button x:Uid="Cp2" Grid.Row="1" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click_1" ToolTipService.ToolTip="Copy">
+                <Button x:Name="Cp2" Grid.Row="1" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click_1">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8C8;"/>
                     </Button.Content>
                 </Button>
-                <Button x:Uid="Cp3" Grid.Row="2" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click_2" ToolTipService.ToolTip="Copy">
+                <Button x:Name="Cp3" Grid.Row="2" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click_2">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8C8;"/>
                     </Button.Content>
                 </Button>
-                <Button x:Uid="Cp4" Grid.Row="3" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click_3" ToolTipService.ToolTip="Copy">
+                <Button x:Name="Cp4" Grid.Row="3" Grid.Column="2" FontSize="20" Foreground="Black" Click="Button_Click_3" ToolTipService.ToolTip="Copy">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8C8;"/>
                     </Button.Content>

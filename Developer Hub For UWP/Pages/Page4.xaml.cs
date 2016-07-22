@@ -1,16 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Windows.Storage;
 using Windows.UI.Xaml.Controls;
-using Windows.Web.Http;
-using static Developer_Hub_For_UWP.Presentation.insideten;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using static Core.DataModel.insideten;
 
 namespace Developer_Hub_For_UWP.Pages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Page4 : Page
     {
         public Page4()
@@ -25,10 +20,10 @@ namespace Developer_Hub_For_UWP.Pages
 
         private async void UpdateData()
         {
-            var client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(new Uri("http://insideten.xyz/api.json"));
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile jsonFile = await localFolder.GetFileAsync("api.json");
+            var jsonString = await FileIO.ReadTextAsync(jsonFile);
 
-            var jsonString = await response.Content.ReadAsStringAsync();
             RootObject data = JsonConvert.DeserializeObject<RootObject>(jsonString);
 
             Build_v.Text = data.@internal.build;

@@ -1,6 +1,5 @@
-﻿using Developer_Hub_For_UWP.Presentation;
+﻿using Core.DataModel;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Windows.ApplicationModel.Core;
@@ -19,43 +18,19 @@ namespace Developer_Hub_For_UWP.Pages
             this.InitializeComponent();
             InitializeList();
 
-            double L = gridView.ActualWidth;
-            
         }
 
-        private async void InitializeList()
+        private void InitializeList()
         {
-            Uri uri = new Uri("ms-appx:///Assets/Data/data.csv");
-            var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
-            using (var storageStream = await storageFile.OpenReadAsync())
-            {
-                using (Stream stream = storageStream.AsStreamForRead())
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        List<Item> Items = new List<Item>();
-                        while (!reader.EndOfStream)
-                        {
-                            var line = reader.ReadLine();
-                            var values = line.Split(',');
-                            string iconstring;
-                            int p = int.Parse(values[0], System.Globalization.NumberStyles.HexNumber);
-                            iconstring = ((char)p).ToString();
-                            Items.Add(new Item { Name = values[1], Graph = iconstring });
-                        }
-                        gridView.ItemsSource = Items;
-                    }
-                }
-            }
-            
+            var fontList = InstalledFont.GetFonts();
+            CmbFontFamily.ItemsSource = fontList;
         }
 
         private async void gridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            Item output = e.ClickedItem as Item;
+            Character output = e.ClickedItem as Character;
             AddToHistory(output);
-            string selectInfo = output.Graph;
             var currentAV = ApplicationView.GetForCurrentView();
             var newAV = CoreApplication.CreateNewView();
             await newAV.Dispatcher.RunAsync(
@@ -64,11 +39,11 @@ namespace Developer_Hub_For_UWP.Pages
                             {
                                 var newWindow = Window.Current;
                                 var newAppView = ApplicationView.GetForCurrentView();
-                                
-                                newAppView.Title = selectInfo + loader.GetString("Detail");
+
+                                newAppView.Title = loader.GetString("Details");
 
                                 var frame = new Frame();
-                                frame.Navigate(typeof(Browser), selectInfo);
+                                frame.Navigate(typeof(Browser), output);
                                 newWindow.Content = frame;
                                 newWindow.Activate();
 
@@ -78,9 +53,9 @@ namespace Developer_Hub_For_UWP.Pages
                                     currentAV.Id,
                                     ViewSizePreference.UseMinimum);
                             });
-           
+
         }
-        private async void AddToHistory(Item data)
+        private async void AddToHistory(Character data)
         {
             String ori = "";
 
@@ -94,7 +69,7 @@ namespace Developer_Hub_For_UWP.Pages
                     using (StreamReader reader = new StreamReader(Inputstream))
                     {
                         ori = reader.ReadToEnd();
-                        ori = ori +data.Name+"," +data.Graph+ Environment.NewLine;
+                        ori = ori + data.Font + "," + data.Char+","+data.UnicodeIndex+ Environment.NewLine;
                         reader.Dispose();
                     }
                     Inputstream.Dispose();
@@ -114,42 +89,16 @@ namespace Developer_Hub_For_UWP.Pages
             streamout.Dispose();
         }
 
-        private async void Inp_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string c = Inp.Text.ToLower();
-            Uri uri = new Uri("ms-appx:///Assets/Data/data.csv");
-            var storageFile = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            using (var storageStream = await storageFile.OpenReadAsync())
-            {
-                using (Stream stream = storageStream.AsStreamForRead())
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        List<Item> Items = new List<Item>();
-                        while (!reader.EndOfStream)
-                        {
-                            var line = reader.ReadLine();
-                            var values = line.Split(',');
-                            string iconstring;
-                            int p = int.Parse(values[0], System.Globalization.NumberStyles.HexNumber);
-                            iconstring = ((char)p).ToString();
-                            if (values[1].ToLower().Contains(c))
-                            {
-                                Items.Add(new Item { Name = values[1], Graph = iconstring });
-                            }
-                        }
-                        gridView.ItemsSource = Items;
-                    }
-                }
-            }
-        }
+       
 
-        private void StackPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void CmbFontFamily_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ItemsWrapGrid MyItemsPanel = (ItemsWrapGrid)gridView.ItemsPanelRoot;
-            MyItemsPanel.ItemWidth = (e.NewSize.Width -10)/ 8;
-
+            var font =(sender as ComboBox).SelectedItem as InstalledFont;
+            var fontList = InstalledFont.GetFonts();
+            var items = font.GetCharacters();
+            gridView.ItemsSource = items;
         }
     }
-   
+
 }
+
