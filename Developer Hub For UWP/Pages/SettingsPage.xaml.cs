@@ -17,6 +17,7 @@ namespace Developer_Hub_For_UWP.Pages
 
             bool PopupDisabled = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"]);
             txt.IsOn = PopupDisabled;
+            txt.Header = loader.GetString("IsUpdatePopupDisabled");
             txt.OnContent = loader.GetString("on");
             txt.OffContent = loader.GetString("off");
         }

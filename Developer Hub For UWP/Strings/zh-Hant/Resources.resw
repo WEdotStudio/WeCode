@@ -451,4 +451,7 @@ Fuzzy</comment>
   <data name="on" xml:space="preserve">
     <value>開啟</value>
   </data>
+  <data name="IsUpdatePopupDisabled" xml:space="preserve">
+    <value>不再弹出更新提示提醒</value>
+  </data>
 </root>
