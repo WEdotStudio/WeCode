@@ -20,6 +20,12 @@ namespace Developer_Hub_For_UWP.Pages
             txt.Header = loader.GetString("IsUpdatePopupDisabled");
             txt.OnContent = loader.GetString("on");
             txt.OffContent = loader.GetString("off");
+
+            bool OfflineM = Convert.ToBoolean(_localSettings.Containers["Settings"].Values["OfflineMode"]);
+            om.IsOn = OfflineM;
+            om.Header = loader.GetString("OfflineMode");
+            om.OnContent = loader.GetString("on");
+            om.OffContent = loader.GetString("off");
         }
 
         private async void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -50,6 +56,19 @@ namespace Developer_Hub_For_UWP.Pages
                     _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
                     break;
             } 
+        }
+
+        private void om_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            switch (txt.IsOn)
+            {
+                case true:
+                    _localSettings.Containers["Settings"].Values["OfflineMode"] = true;
+                    break;
+                case false:
+                    _localSettings.Containers["Settings"].Values["OfflineMode"] = false;
+                    break;
+            }
         }
     }
 }
