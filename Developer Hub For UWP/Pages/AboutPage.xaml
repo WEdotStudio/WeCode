@@ -11,12 +11,11 @@
             <TextBlock x:Uid="Aboutt" Text="About" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}" />
             <TextBlock FontSize="20">
             <Run  x:Uid="AppN" Text="WeCode "/>
-            <Run Text="v 2.2"/>
+            <Run Text="v 2.5"/>
             </TextBlock>
             <TextBlock x:Uid="Auth" Text="Author: Patrick Wu" FontSize="20"/>
             <TextBlock Text="     " FontSize="20"/>
             <StackPanel Margin="5" Orientation="Horizontal">
-                <Button x:Name="feedbackButton" FontFamily="Segoe MDL2 Assets" Content="&#xE15F;" Click="feedbackButton_Click" Margin="0,0,5,0"/>
                 <Button FontFamily="Segoe MDL2 Assets" Content="&#xE119;" Click="mailButton_Click"/>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal">
