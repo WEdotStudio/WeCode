@@ -8,9 +8,9 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <StackPanel Background="{ThemeResource SystemControlBackgroundAccentBrush}">
-            <Image Source="/Assets/ninja.png" Height="150" HorizontalAlignment="Center"/>
-            <TextBlock x:Uid="welcome" Text="Hello, developer." FontSize="40" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,20"/>
+        <StackPanel Background="Black">
+            <TextBlock x:Uid="welcome" Text="🐱💻" FontSize="100" HorizontalAlignment="Center" Foreground="White"/>
+            <TextBlock x:Uid="welcome" Text="Hello, developer." FontSize="40" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
             <TextBlock x:Uid="welcome_device"  Text="You are curently using" HorizontalAlignment="Center"   FontSize="25%" Foreground="White" />
             <TextBlock HorizontalAlignment="Center"   FontSize="20%" Foreground="White" >
             <Run Text="WIndows 10 Build"/>
