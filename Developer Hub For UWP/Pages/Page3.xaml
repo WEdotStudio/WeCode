@@ -28,10 +28,10 @@
                 </StackPanel>
                 <TextBlock x:Uid="Pre" Text="Preview:" FontSize="20" Margin="5"/>
                 <StackPanel Height="115" Orientation="Horizontal" Margin="5,0">
-                    <Border Width="115" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="5,5,10,5">
+                    <Border AllowDrop="True" DragOver="Grid_DragOver_s" Drop="Grid_Drop_s" Width="115" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="5,5,10,5">
                         <Image x:Name="img_s" HorizontalAlignment="Center"/>
                     </Border>
-                    <Border Width="237" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="10,5,5,5">
+                    <Border  AllowDrop="True" DragOver="Grid_DragOver_l" Drop="Grid_Drop_l" Width="237" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Margin="10,5,5,5">
                         <Image x:Name="img_w" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>
