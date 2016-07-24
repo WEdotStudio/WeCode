@@ -1,10 +1,11 @@
 ﻿using Core.DataModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
+using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 using Windows.Web.Http;
 
@@ -12,7 +13,18 @@ namespace Core
 {
      public class Shell
     {
-        public async void CheckUpdate()
+        public enum DisplayMethod
+        {
+            Notificarion = 0,
+            Popup=1,
+            UpdateGrid=2
+        }
+        public struct UpdateData
+        {
+            string version { get; set; }
+            string details { get; set; }
+        }
+        public async Task CheckUpdate(DisplayMethod method)
         {
             string url = "http://ap.westudio.ml/sources/json/wecode-update.json";
 #if DEBUG
@@ -47,38 +59,53 @@ namespace Core
                 }
 
                 string detailstringin = await detailstring.Content.ReadAsStringAsync();
-                string xmlContent = string.Empty;
-                XmlDocument xdoc = new XmlDocument();
-                xmlContent = string.Format(
-                    "<toast>" +
-                        "<visual>" +
-                            "<binding template = 'ToastGeneric'>" +
-                                   "<image placement = 'appLogoOverride' src = '' />" +
-                                   "<text> {0} {1} {2}</text>" +
-                                    "<text>{3}</text>" +
-                                    "<image  placement = 'hero' src = 'Assets/new-ver.png' />" +
-                            "</binding>" +
-                        "</visual>" +
-                        "<actions>" +
-                            "<action" +
-                             " content = '{4}'" +
-                             " activationType='protocol'" +
-                             " arguments = 'ms-windows-store://pdp/?ProductId=9nblggh5p90f' />" +
-                             "<action" +
-                             " content = '{5}'" +
-                             " arguments = 'action=disableNoti' />" +
-                             "<action" +
-                             " content = '{6}'" +
-                             " activationType='system'" +
-                             " arguments = 'dismiss' />" +
-                         "</actions>" +
-                    "</toast>",
-                     loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_5"), loader.GetString("nr_4")
-                );
-                xdoc.LoadXml(xmlContent);
-                ToastNotification toast1 = new ToastNotification(xdoc);
-                ToastNotificationManager.CreateToastNotifier().Show(toast1);
+                switch (method)
+                {
+                    case DisplayMethod.Notificarion:
+                        string xmlContent = string.Empty;
+                        XmlDocument xdoc = new XmlDocument();
+                        xmlContent = string.Format(
+                            "<toast>" +
+                                "<visual>" +
+                                    "<binding template = 'ToastGeneric'>" +
+                                           "<image placement = 'appLogoOverride' src = '' />" +
+                                           "<text> {0} {1} {2}</text>" +
+                                            "<text>{3}</text>" +
+                                            "<image  placement = 'hero' src = 'Assets/new-ver.png' />" +
+                                    "</binding>" +
+                                "</visual>" +
+                                "<actions>" +
+                                    "<action" +
+                                     " content = '{4}'" +
+                                     " activationType='protocol'" +
+                                     " arguments = 'ms-windows-store://pdp/?ProductId=9nblggh5p90f' />" +
+                                     "<action" +
+                                     " content = '{5}'" +
+                                     " arguments = 'action=disableNoti' />" +
+                                     "<action" +
+                                     " content = '{6}'" +
+                                     " activationType='system'" +
+                                     " arguments = 'dismiss' />" +
+                                 "</actions>" +
+                            "</toast>",
+                             loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_5"), loader.GetString("nr_4")
+                        );
+                        xdoc.LoadXml(xmlContent);
+                        ToastNotification toast1 = new ToastNotification(xdoc);
+                        ToastNotificationManager.CreateToastNotifier().Show(toast1);
+                        break;
+                    case DisplayMethod.Popup:
+                        break;
+                    case DisplayMethod.UpdateGrid:
+                        break;
+                }
+                
             }
+        }
+
+        public async Task CheckUpdate()
+        {
+            await CheckUpdate(DisplayMethod.Notificarion);
         }
     }
 }
