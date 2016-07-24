@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
 using Developer_Hub_For_UWP.Presentation;
+using Core;
 
 namespace Developer_Hub_For_UWP
 {
@@ -26,8 +27,8 @@ namespace Developer_Hub_For_UWP
 
         public Shell()
         {
-            _localSettings =ApplicationData.Current.LocalSettings;
-            this.InitializeComponent();
+            _localSettings = ApplicationData.Current.LocalSettings;
+            this.Initialize();
 
             var applicationView = ApplicationView.GetForCurrentView();
             var titleBar = applicationView.TitleBar;
@@ -52,7 +53,7 @@ namespace Developer_Hub_For_UWP
 
             vm.BottomItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("Settings"), PageType = typeof(SettingsPage) });
             vm.BottomItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("About"), PageType = typeof(AboutPage) });
-            
+
 
             // select the first top item
             vm.SelectedItem = vm.TopItems.First();
@@ -70,7 +71,7 @@ namespace Developer_Hub_For_UWP
                 TransferToStorage();
             }
             //if update
-            else if((string)_localSettings.Containers["Settings"].Values["Version"] != "020500")
+            else if ((string)_localSettings.Containers["Settings"].Values["Version"] != "020500")
             {
                 _localSettings.Containers["Settings"].Values["Version"] = "020500";
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
@@ -85,9 +86,14 @@ namespace Developer_Hub_For_UWP
             {
                 if (!PopupDisabled) CheckUpdate();
                 UpdateInsidetenApi();
-            }           
+            }
 
             this.Loaded += delegate { this.Focus(Windows.UI.Xaml.FocusState.Programmatic); };
+        }
+
+        private async void CheckUpdate()
+        {
+            await CoreAction.CheckUpdate();
         }
 
         private async void DelLegacyHistory()
@@ -106,7 +112,7 @@ namespace Developer_Hub_For_UWP
         {
             await UrlPhraser.ReachFile("http://insideten.xyz/api.json", Response.DownloadToLocalFolder);
         }
-       
+
 
         public ShellViewModel ViewModel { get; private set; }
 
@@ -129,7 +135,7 @@ namespace Developer_Hub_For_UWP
                     case VirtualKey.U: Frame.Navigate(typeof(Page2), Frame); break;
                     case VirtualKey.F: Frame.Navigate(typeof(Page1), Frame); break;
                     case VirtualKey.A: Frame.Navigate(typeof(Page3), Frame); break;
-                    case VirtualKey.B: Frame.Navigate(typeof(Page4), Frame); break;      
+                    case VirtualKey.B: Frame.Navigate(typeof(Page4), Frame); break;
                 }
             }
             if (e.Key == VirtualKey.Control) isControlKeyPressed = true;
