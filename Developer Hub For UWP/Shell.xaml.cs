@@ -63,16 +63,19 @@ namespace Developer_Hub_For_UWP
                 ApplicationDataContainer container = _localSettings.CreateContainer("Settings", ApplicationDataCreateDisposition.Always);
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
                 _localSettings.Containers["Settings"].Values["IsFonticonExtraFileDownloaded"] = false;
-                _localSettings.Containers["Settings"].Values["Version"] = "020200";
+                _localSettings.Containers["Settings"].Values["OfflineMode"] = false;
+                _localSettings.Containers["Settings"].Values["Version"] = "020500";
 
                 DelLegacyHistory();
                 TransferToStorage();
             }
             //if update
-            else if((string)_localSettings.Containers["Settings"].Values["Version"] != "020200")
+            else if((string)_localSettings.Containers["Settings"].Values["Version"] != "020500")
             {
-                _localSettings.Containers["Settings"].Values["Version"] = "020200";
+                _localSettings.Containers["Settings"].Values["Version"] = "020500";
                 _localSettings.Containers["Settings"].Values["IsUpdatePopupDisabled"] = false;
+
+                _localSettings.Containers["Settings"].Values["OfflineMode"] = false;
             }
             // whether the internet is connected.
             var conetvty = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
@@ -103,74 +106,7 @@ namespace Developer_Hub_For_UWP
         {
             await UrlPhraser.ReachFile("http://insideten.xyz/api.json", Response.DownloadToLocalFolder);
         }
-        private async void CheckUpdate()
-        {
-            string url = "http://ap.westudio.ml/sources/json/wecode-update.json";
-#if DEBUG
-            url = "http://ap.westudio.ml/sources/json/wecode-update-test.json";
-#endif
-            var client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(new Uri(url));
-
-            var jsonString = await response.Content.ReadAsStringAsync();
-            Update.RootObject data = JsonConvert.DeserializeObject<Update.RootObject>(jsonString);
-            string version = data.version;
-            string[] versionnum = version.Split('.');
-            int versioncount = Convert.ToInt32(versionnum[0]) * 10000 + Convert.ToInt32(versionnum[1]) * 100 + Convert.ToInt32(versionnum[2]);
-            if (versioncount > 20200)
-            {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                HttpResponseMessage detailstring;
-                switch (loader.GetString("nr_lan"))
-                {
-                    case "en":
-                        detailstring = await client.GetAsync(new Uri(data.detail.en));
-                        break;
-                    case "zh-hans":
-                         detailstring = await client.GetAsync(new Uri(data.detail.zh_hans));
-                        break;
-                    case "zh-hant":
-                         detailstring = await client.GetAsync(new Uri(data.detail.zh_hant));
-                        break;
-                    default:
-                        detailstring = await client.GetAsync(new Uri(data.detail.en));
-                        break;
-                }
-
-                string detailstringin = await detailstring.Content.ReadAsStringAsync();
-                string xmlContent = string.Empty;
-                XmlDocument xdoc = new XmlDocument();
-                xmlContent = string.Format(
-                    "<toast>" +
-                        "<visual>" +
-                            "<binding template = 'ToastGeneric'>" +
-                                   "<image placement = 'appLogoOverride' src = '' />" +
-                                   "<text> {0} {1} {2}</text>" +
-                                    "<text>{3}</text>" +
-                                    "<image  placement = 'hero' src = 'Assets/new-ver.png' />" +
-                            "</binding>" +
-                        "</visual>" +
-                        "<actions>" +
-                            "<action" +
-                             " content = '{4}'" +
-                             " activationType='protocol'" +
-                             " arguments = 'ms-windows-store://pdp/?ProductId=9nblggh5p90f' />" +
-                             "<action" +
-                             " content = '{5}'" +
-                             " arguments = 'action=disableNoti' />" +
-                             "<action" +
-                             " content = '{6}'" +
-                             " activationType='system'" +
-                             " arguments = 'dismiss' />" +
-                         "</actions>" +
-                    "</toast>",
-                     loader.GetString("nr_1"), version, loader.GetString("nr_2"), detailstringin, loader.GetString("nr_3"), loader.GetString("nr_5"), loader.GetString("nr_4")
-                );
-                xdoc.LoadXml(xmlContent);
-                ToastNotification toast1 = new ToastNotification(xdoc);
-                ToastNotificationManager.CreateToastNotifier().Show(toast1);
-            }
-        }
+       
 
         public ShellViewModel ViewModel { get; private set; }
 
