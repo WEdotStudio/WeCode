@@ -163,14 +163,26 @@
     <Compile Include="Pages\Browser.xaml.cs">
       <DependentUpon>Browser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ColorC.xaml.cs">
+      <DependentUpon>ColorC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Json2CS.xaml.cs">
+      <DependentUpon>Json2CS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NotificationEd.xaml.cs">
+      <DependentUpon>NotificationEd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page4.xaml.cs">
       <DependentUpon>Page4.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page5.xaml.cs">
       <DependentUpon>Page5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\txtedit.xaml.cs">
+      <DependentUpon>txtedit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ShellViewModel.cs" />
     <Compile Include="Shell.xaml.cs">
@@ -214,7 +226,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ColorC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Json2CS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NotificationEd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,6 +247,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Page5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\txtedit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

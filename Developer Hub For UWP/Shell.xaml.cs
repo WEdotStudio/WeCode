@@ -49,7 +49,12 @@ namespace Developer_Hub_For_UWP
             vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("SMI"), PageType = typeof(Page1) });
             vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("AG"), PageType = typeof(Page3) });
             vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("LBI"), PageType = typeof(Page4) });
-
+#if DEBUG
+            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zDevice Portal", PageType = typeof(Page5) });
+            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zText Editor", PageType = typeof(txtedit) });
+            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zJson-to-Class Converter", PageType = typeof(Json2CS) });
+            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zColor", PageType = typeof(ColorC) });
+#endif
             vm.BottomItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("Settings"), PageType = typeof(SettingsPage) });
 
 
