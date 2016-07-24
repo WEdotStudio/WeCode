@@ -18,18 +18,6 @@ namespace Core
     /// </summary>
     public class CoreAction
     {
-        #region CheckUpdate
-        public struct UpdateData
-        {
-            public string version, details;
-            public DisplayMethod method;
-            public UpdateData(string v, string d, DisplayMethod m)
-            {
-                version = v;
-                details = d;
-                method = m;
-            }
-        }
 
         /// <summary>
         /// Check Update And Display A Notification
@@ -103,51 +91,6 @@ namespace Core
                 ToastNotification toast1 = new ToastNotification(xdoc);
                 ToastNotificationManager.CreateToastNotifier().Show(toast1);
             }
-        }
-
-        /// <summary>
-        /// Check Update And Return UpdateData
-        /// </summary>
-        /// <returns>Returns UpdateData </returns>
-        public async static Task CheckUpdateWithGrid()
-        {
-            string url = "http://ap.westudio.ml/sources/json/wecode-update.json";
-#if DEBUG
-            url = "http://ap.westudio.ml/sources/json/wecode-update-test.json";
-#endif
-            var client = new HttpClient();
-
-            HttpResponseMessage response = await client.GetAsync(new Uri(url));
-
-            var jsonString = await response.Content.ReadAsStringAsync();
-            Update.RootObject data = JsonConvert.DeserializeObject<Update.RootObject>(jsonString);
-            string version = data.version;
-            string[] versionnum = version.Split('.');
-            int versioncount = Convert.ToInt32(versionnum[0]) * 10000 + Convert.ToInt32(versionnum[1]) * 100 + Convert.ToInt32(versionnum[2]);
-            if (versioncount > 20500)
-            {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                HttpResponseMessage detailstring;
-                switch (loader.GetString("nr_lan"))
-                {
-                    case "en":
-                        detailstring = await client.GetAsync(new Uri(data.detail.en));
-                        break;
-                    case "zh-hans":
-                        detailstring = await client.GetAsync(new Uri(data.detail.zh_hans));
-                        break;
-                    case "zh-hant":
-                        detailstring = await client.GetAsync(new Uri(data.detail.zh_hant));
-                        break;
-                    default:
-                        detailstring = await client.GetAsync(new Uri(data.detail.en));
-                        break;
-                }
-                string detailstringin = await detailstring.Content.ReadAsStringAsync();
-            }        
-        }
-        #endregion
-
-
+        }   
     }
 }

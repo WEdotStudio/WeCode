@@ -15,6 +15,10 @@
             </Grid.RowDefinitions>
             <TextBlock x:Uid="Sett" Text="Settings / About" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}"  Margin="10"/>
             <StackPanel Grid.Row="2" Margin="10">
+                <Border Background="Gray" Opacity="0.6" Height="120" Width="120" HorizontalAlignment="Left" Margin="10">
+                    <Image Source="../Assets/Square310x310Logo.scale-400.png"/>
+                </Border>
+                
                 <TextBlock FontSize="20">
                     <Run  x:Uid="AppN" Text="WeCode "/>
                     <Run Text="v 2.5"/>
@@ -25,7 +29,7 @@
                     <Button Content="Check For Update" Click="mailButton_Click"/>
                 </StackPanel>
                 <StackPanel Margin="5" Orientation="Horizontal">
-                    <Button x:Uid="RR" Content="Rate &#x0026; Review" Click="Button_Click" Margin="0,0,5,0"/>
+                    <Button x:Uid="RR" Content="Rate &#x0026; Review" Click="Button_Click_1" Margin="0,0,5,0"/>
                     <Button x:Uid="libs" Content="Libraries">
                         <Button.Flyout>
                             <Flyout>
