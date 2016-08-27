@@ -3,15 +3,10 @@ using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Developer_Hub_For_UWP.Pages;
 using Core.Network;
-using Core.DataModel;
 using Windows.UI.ViewManagement;
 using Windows.UI;
 using Windows.System;
-using System.Net.Http;
-using Windows.UI.Notifications;
 using System;
-using Windows.Data.Xml.Dom;
-using Newtonsoft.Json;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
 using Developer_Hub_For_UWP.Presentation;
@@ -44,26 +39,6 @@ namespace Developer_Hub_For_UWP
             titleBar.ForegroundColor = Colors.White;
 
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-
-            var vm = new ShellViewModel();
-
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("Home"), PageType = typeof(Home) });
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("UL"), PageType = typeof(Page2) });
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("SMI"), PageType = typeof(Page1) });
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("AG"), PageType = typeof(Page3) });
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("LBI"), PageType = typeof(Page4) });
-#if DEBUG
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zDevice_Portal", PageType = typeof(Page5) });
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zText_Editor", PageType = typeof(txtedit) });
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zJson_to_Class_Converter", PageType = typeof(Json2CS) });
-            vm.TopItems.Add(new NavigationItem { Icon = "", DisplayName = "zColor", PageType = typeof(ColorC) });
-#endif
-            vm.BottomItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("Settings"), PageType = typeof(SettingsPage) });
-
-
-            // select the first top item
-            vm.SelectedItem = vm.TopItems.First();
-            this.ViewModel = vm;
 
             //if new download
             if (!_localSettings.Containers.ContainsKey("Settings"))
@@ -121,16 +96,6 @@ namespace Developer_Hub_For_UWP
         }
 
 
-        public ShellViewModel ViewModel { get; private set; }
-
-        public Frame RootFrame
-        {
-            get
-            {
-                return this.Frame;
-            }
-        }
-
         private void Grid_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Menu) isAltKeyPressed = true;
@@ -146,6 +111,35 @@ namespace Developer_Hub_For_UWP
                     case VirtualKey.S: Frame.Navigate(typeof(SettingsPage), Frame); break;
                 }
             }
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            var currentAV = ApplicationView.GetForCurrentView();
+            var newAV = CoreApplication.CreateNewView();
+            await newAV.Dispatcher.RunAsync(
+                            CoreDispatcherPriority.Normal,
+                            async () =>
+                            {
+                                var newWindow = Window.Current;
+                                var newAppView = ApplicationView.GetForCurrentView();
+
+                                newAppView.Title = "zNewStart";
+
+                                var frame = new Frame();
+                                frame.Navigate(typeof(MainPage));
+                                newWindow.Content = frame;
+                                newWindow.Activate();
+
+                                await ApplicationViewSwitcher.TryShowAsStandaloneAsync(
+                                    newAppView.Id,
+                                    ViewSizePreference.UseMinimum,
+                                    currentAV.Id,
+                                    ViewSizePreference.UseMinimum);
+                            });
+
         }
     }
 }

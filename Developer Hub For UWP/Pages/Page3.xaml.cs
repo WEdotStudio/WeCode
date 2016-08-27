@@ -253,14 +253,37 @@ namespace Developer_Hub_For_UWP.Pages
         private void Grid_Drop_l(object sender, DragEventArgs e)
         {
             e.AcceptedOperation = DataPackageOperation.Copy;
-            e.DragUIOverride.Caption = "drop 1200x280 .png file here"; // Sets custom UI text
+            e.DragUIOverride.Caption = "drop 1200x2480.png file here"; // Sets custom UI text
             e.DragUIOverride.IsCaptionVisible = true; // Sets if the caption is visible
             e.DragUIOverride.IsContentVisible = true; // Sets if the dragged content is visible
         }
 
-        private void Grid_DragOver_l(object sender, DragEventArgs e)
+        private async void Grid_DragOver_l(object sender, DragEventArgs e)
         {
+            if (e.DataView.Contains(StandardDataFormats.StorageItems))
+            {
+                var items = await e.DataView.GetStorageItemsAsync();
+                if (items.Count > 0)
+                {
+                    var storageFile = items[0] as StorageFile;
+                    StoredFile2 = storageFile;
+                    if (storageFile != null)
+                    {
+                        Stor.Text = storageFile.Name.Substring(0, storageFile.Name.LastIndexOf("."));
+                        using (IRandomAccessStream fileStream = await storageFile.OpenAsync(FileAccessMode.Read))
+                        {
+                            BitmapImage bitmapImage = new BitmapImage();
+                            bitmapImage.DecodePixelHeight = 1200;
+                            bitmapImage.DecodePixelWidth = 2480;
 
+                            await bitmapImage.SetSourceAsync(fileStream);
+                            img_w.Source = bitmapImage;
+                        }
+
+                        IsPicked2 = true;
+                    }
+                }
+            }
         }
     }
 }
