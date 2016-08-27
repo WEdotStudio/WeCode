@@ -13,14 +13,14 @@ namespace Developer_Hub_For_UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page3 : Page
+    public sealed partial class AssetsGen : Page
     {
         public bool IsPicked1 = false;
         public bool IsPicked2 = false;
         public bool Iss44LVisible = true;
         public StorageFile StoredFile1 = null;
         public StorageFile StoredFile2 = null;
-        public Page3()
+        public AssetsGen()
         {
             this.InitializeComponent();
 

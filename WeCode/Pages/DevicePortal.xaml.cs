@@ -9,10 +9,10 @@ namespace Developer_Hub_For_UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page5 : Page
+    public sealed partial class DevicePortal : Page
     {
 
-        public Page5()
+        public DevicePortal()
         {
             this.InitializeComponent();
 

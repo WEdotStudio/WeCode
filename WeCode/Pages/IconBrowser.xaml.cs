@@ -11,9 +11,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace Developer_Hub_For_UWP.Pages
 {
-    public sealed partial class Page1 : Page
+    public sealed partial class IconBrowser : Page
     {
-        public Page1()
+        public IconBrowser()
         {
             this.InitializeComponent();
             InitializeList();

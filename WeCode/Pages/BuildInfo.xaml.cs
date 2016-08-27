@@ -6,9 +6,9 @@ using static Core.DataModel.insideten;
 
 namespace Developer_Hub_For_UWP.Pages
 {
-    public sealed partial class Page4 : Page
+    public sealed partial class BuildInfo : Page
     {
-        public Page4()
+        public BuildInfo()
         {
             this.InitializeComponent();
 

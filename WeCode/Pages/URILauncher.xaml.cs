@@ -13,11 +13,11 @@ namespace Developer_Hub_For_UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page2 : Page
+    public sealed partial class URILauncher : Page
     {
         private ApplicationDataContainer _appSettings;
         public bool isopen = false;
-        public Page2()
+        public URILauncher()
         {
             this.InitializeComponent();
             _appSettings = ApplicationData.Current.LocalSettings;
