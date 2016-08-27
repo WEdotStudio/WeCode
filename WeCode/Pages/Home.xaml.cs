@@ -126,12 +126,12 @@ namespace Developer_Hub_For_UWP.Pages
 
         private void TextBlock_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Page4), Frame);
+            Frame.Navigate(typeof(BuildInfo), Frame);
         }
 
         private void TextBlock_Tapped_1(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Page1), Frame);
+            Frame.Navigate(typeof(IconBrowser), Frame);
         }
     }
    

@@ -147,6 +147,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\zh-Hans\Resources.resw" />
+    <PRIResource Include="Strings\zh-Hant\Resources.resw" />
     <None Include="WeCode_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +258,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Color\Color.csproj">
+      <Project>{63281117-2ff4-46be-8114-659488c3bffd}</Project>
+      <Name>Color</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{30264440-54b2-4524-bf85-80a0f5540bec}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Json to CSharp Generator\Json2Csharp.csproj">
+      <Project>{c9df65cd-ea82-4148-b819-79789cf533a3}</Project>
+      <Name>Json2Csharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

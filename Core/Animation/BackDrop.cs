@@ -8,27 +8,26 @@ using Windows.UI.Xaml.Hosting;
 
 namespace Core.Animation
 {
-        public class BackDrop : Control
+    public class BackDrop : Control
+    {
+        Compositor m_compositor;
+        SpriteVisual m_blurVisual;
+        CompositionBrush m_blurBrush;
+        Visual m_rootVisual;
+
+#if SDKVERSION_14393
+        bool m_setUpExpressions;
+        CompositionSurfaceBrush m_noiseBrush;
+#endif
+
+        public BackDrop()
         {
-        
-            Compositor m_compositor;
-            SpriteVisual m_blurVisual;
-            CompositionBrush m_blurBrush;
-            Visual m_rootVisual;
+            m_rootVisual = ElementCompositionPreview.GetElementVisual(this as UIElement);
+            Compositor = m_rootVisual.Compositor;
 
+            m_blurVisual = Compositor.CreateSpriteVisual();
 
-            bool m_setUpExpressions;
-            CompositionSurfaceBrush m_noiseBrush;
-
-
-            public BackDrop()
-            {
-                m_rootVisual = ElementCompositionPreview.GetElementVisual(this as UIElement);
-                Compositor = m_rootVisual.Compositor;
-
-                m_blurVisual = Compositor.CreateSpriteVisual();
-
-
+#if SDKVERSION_14393
             m_noiseBrush = Compositor.CreateSurfaceBrush();
 
             CompositionEffectBrush brush = BuildBlurBrush();
@@ -38,99 +37,107 @@ namespace Core.Animation
 
             BlurAmount = 9;
             TintColor = Colors.Transparent;
+#else
+            m_blurBrush = Compositor.CreateColorBrush(Colors.White);
+            m_blurVisual.Brush = m_blurBrush;
+#endif
+            ElementCompositionPreview.SetElementChildVisual(this as UIElement, m_blurVisual);
 
-                ElementCompositionPreview.SetElementChildVisual(this as UIElement, m_blurVisual);
+            this.Loading += OnLoading;
+            this.Unloaded += OnUnloaded;
+        }
 
-                this.Loading += OnLoading;
-                this.Unloaded += OnUnloaded;
-            }
+        public const string BlurAmountProperty = nameof(BlurAmount);
+        public const string TintColorProperty = nameof(TintColor);
 
-            public const string BlurAmountProperty = nameof(BlurAmount);
-            public const string TintColorProperty = nameof(TintColor);
-
-            public double BlurAmount
+        public double BlurAmount
+        {
+            get
             {
-                get
-                {
-                    float value = 0;
-
+                float value = 0;
+#if SDKVERSION_14393
                 m_rootVisual.Properties.TryGetScalar(BlurAmountProperty, out value);
-
-                    return value;
-                }
-                set
-                {
-
-                    if (!m_setUpExpressions)
-                    {
-                       m_blurBrush.Properties.InsertScalar("Blur.BlurAmount", (float)value);
-                    }
-                     m_rootVisual.Properties.InsertScalar(BlurAmountProperty, (float)value);
-
-                }
+#endif
+                return value;
             }
-
-            public Color TintColor
+            set
             {
-                get
+#if SDKVERSION_14393
+                if (!m_setUpExpressions)
                 {
-                    Color value;
-
-                    m_rootVisual.Properties.TryGetColor("TintColor", out value);
-                    return value;
+                    m_blurBrush.Properties.InsertScalar("Blur.BlurAmount", (float)value);
                 }
-                set
-                {
+                m_rootVisual.Properties.InsertScalar(BlurAmountProperty, (float)value);
+#endif
+            }
+        }
 
+        public Color TintColor
+        {
+            get
+            {
+                Color value;
+#if SDKVERSION_14393
+                m_rootVisual.Properties.TryGetColor("TintColor", out value);
+#else
+                value = ((CompositionColorBrush)m_blurBrush).Color;
+#endif
+                return value;
+            }
+            set
+            {
+#if SDKVERSION_14393
                 if (!m_setUpExpressions)
                 {
                     m_blurBrush.Properties.InsertColor("Color.Color", value);
                 }
                 m_rootVisual.Properties.InsertColor(TintColorProperty, value);
-
-                }
+#else
+                ((CompositionColorBrush)m_blurBrush).Color = value;
+#endif
             }
+        }
 
-            public Compositor Compositor
+        public Compositor Compositor
+        {
+            get
             {
-                get
-                {
-                    return m_compositor;
-                }
-
-                private set
-                {
-                    m_compositor = value;
-                }
+                return m_compositor;
             }
+
+            private set
+            {
+                m_compositor = value;
+            }
+        }
 
 #pragma warning disable 1998
-            private async void OnLoading(FrameworkElement sender, object args)
-            {
-                this.SizeChanged += OnSizeChanged;
-                OnSizeChanged(this, null);
+        private async void OnLoading(FrameworkElement sender, object args)
+        {
+            this.SizeChanged += OnSizeChanged;
+            OnSizeChanged(this, null);
 
-
+#if SDKVERSION_14393
             m_noiseBrush.Surface = await SurfaceLoader.LoadFromUri(new Uri("ms-appx:///Assets/Noise.jpg"));
             m_noiseBrush.Stretch = CompositionStretch.UniformToFill;
+#endif
+        }
 
-            }
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            this.SizeChanged -= OnSizeChanged;
+        }
 
-            private void OnUnloaded(object sender, RoutedEventArgs e)
+
+        private void OnSizeChanged(object sender, Windows.UI.Xaml.SizeChangedEventArgs e)
+        {
+            if (m_blurVisual != null)
             {
-                this.SizeChanged -= OnSizeChanged;
+                m_blurVisual.Size = new System.Numerics.Vector2((float)this.ActualWidth, (float)this.ActualHeight);
             }
+        }
 
-
-            private void OnSizeChanged(object sender, Windows.UI.Xaml.SizeChangedEventArgs e)
-            {
-                if (m_blurVisual != null)
-                {
-                    m_blurVisual.Size = new System.Numerics.Vector2((float)this.ActualWidth, (float)this.ActualHeight);
-                }
-            }
-
-
+#if SDKVERSION_14393
         private void SetUpPropertySetExpressions()
         {
             m_setUpExpressions = true;
@@ -200,5 +207,8 @@ namespace Core.Animation
             }
         }
 
-        }
+#endif
+
     }
+}
+
