@@ -108,8 +108,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animation\BackDrop.cs" />
-    <Compile Include="Animation\SurfaceLoader.cs" />
     <Compile Include="DataModel\DataModel.cs" />
     <Compile Include="DataModel\HistoryModel.cs" />
     <Compile Include="DataModel\insideten.cs" />

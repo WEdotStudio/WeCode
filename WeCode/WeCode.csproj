@@ -157,7 +157,6 @@
     <Content Include="Assets\hero.png" />
     <Content Include="Assets\new-ver.png" />
     <Content Include="Assets\ninja.png" />
-    <Content Include="Assets\Noise.jpg" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />

@@ -1,30 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Microsoft.Toolkit.Uwp.UI.Animations;
+using Windows.Security.ExchangeActiveSyncProvisioning;
+using Windows.Storage;
+using Windows.System.Profile;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+
 
 namespace WeCode
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+        public ApplicationDataContainer _localSettings;
         public MainPage()
         {
             this.InitializeComponent();
+            this.Loaded += MainPage_Loaded;
+            _localSettings = ApplicationData.Current.LocalSettings;
+
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            UpdateBuildInfo();
+           
+        }
+
+        private void MainPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            bg.Blur(value: 20, duration: 50, delay: 10).Start();
+        }
+        private void UpdateBuildInfo()
+        {
+            //System Version
+            string sv = AnalyticsInfo.VersionInfo.DeviceFamilyVersion;
+            ulong v = ulong.Parse(sv);
+            ulong v3 = (v & 0x00000000FFFF0000L) >> 16;
+            bu.Text = $"{v3}";
+
+            //System Info
+            EasClientDeviceInformation eas = new EasClientDeviceInformation();
+            ma.Text = eas.SystemManufacturer + " " + eas.SystemProductName;
         }
     }
 }
