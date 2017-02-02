@@ -246,7 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Color\Color.csproj">
-      <Project>{63281117-2ff4-46be-8114-659488c3bffd}</Project>
+      <Project>{e3135599-e75e-4165-ab74-5977a0611d45}</Project>
       <Name>Color</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
