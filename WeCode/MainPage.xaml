@@ -9,105 +9,59 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Grid.RowSpan="2" x:Name="bg" Source="ms-appx:///Assets/bg.jpg" Stretch="UniformToFill" HorizontalAlignment="Right"/>
-        <controls:BladeControl Margin="12"
-                               HorizontalAlignment="Stretch"
-                               VerticalAlignment="Stretch">
-            <controls:BladeControl.Blades>
-                <controls:Blade Title="Home"
-                                IsOpen="True"
-                                TitleBarVisibility="Collapsed">
-                    <controls:Blade.Element>
-                        <Grid>
-                            <Grid.Background>
-                                <SolidColorBrush Color="Black" Opacity="0.5"/>
-                            </Grid.Background>
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="🐱💻" FontSize="100" HorizontalAlignment="Center"/>
+                <TextBlock x:Uid="welcome" Text="Hello, developer." FontSize="40" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
+                <TextBlock x:Uid="welcome_device"  Text="You are curently using" HorizontalAlignment="Center"   FontSize="25%" Foreground="White" />
+                <TextBlock HorizontalAlignment="Center"   FontSize="20%" Foreground="White" >
+			<Run Text="WIndows 10 Build"/>
+            <Run x:Name="bu" Text=" 14354"/>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" FontSize="20%" Foreground="White" Margin="0,0,0,20" >
+            <Run x:Uid="welcome_o" Text="on"/>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" FontSize="20%" Foreground="White" Margin="0,0,0,20" >
+<Run x:Name="ma" Text=" Microsoft Surface Pro 3"/>
+                </TextBlock>
+            </StackPanel>
+            <controls:AdaptiveGridView Name="gridView"
+                                   Grid.Row="1"
+                                   OneRowModeEnabled="False"
+                                   Width="480"
+                                   ItemHeight="150"
+                                   DesiredWidth="150"
+                                   SelectionMode="None"
+                                   IsItemClickEnabled="True"
+                                   ItemClick="gridView_ItemClick">
+                <controls:AdaptiveGridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5" Padding="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <TextBlock Text="🐱💻" FontSize="100" HorizontalAlignment="Center"/>
-                                <TextBlock x:Uid="welcome" Text="Hello, developer." FontSize="40" HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
-                                <TextBlock x:Uid="welcome_device"  Text="You are curently using" HorizontalAlignment="Center"   FontSize="25%" Foreground="White" />
-                                <TextBlock HorizontalAlignment="Center"   FontSize="20%" Foreground="White" >
-            <Run Text="WIndows 10 Build"/>
-            <Run x:Name="bu" Text=" 14354"/>
-                                </TextBlock>
-                                <TextBlock HorizontalAlignment="Center" FontSize="20%" Foreground="White" Margin="0,0,0,20" >
-            <Run x:Uid="welcome_o" Text="on"/>
-                                </TextBlock>
-                                <TextBlock HorizontalAlignment="Center" FontSize="20%" Foreground="White" Margin="0,0,0,20" >
-<Run x:Name="ma" Text=" Microsoft Surface Pro 3"/>
-                                </TextBlock>
-                            </StackPanel>
-                            <GridView x:Name="gridView" Grid.Row="1" Width="320" HorizontalAlignment="Center" SelectionMode="None" IsItemClickEnabled="True" ItemClick="gridView_ItemClick" Margin="0,5">
-                                <GridView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid Height="80" Margin="5">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-                                            <Rectangle x:Name="itembg" Height="90" Width="90" Fill="Black" Opacity="0.4" Grid.RowSpan="2">
-                                                <interactivity:Interaction.Behaviors>
-                                                    <behaviors:Blur x:Name="BlurBehavior"  Value="10" Duration="10" Delay="0" AutomaticallyStart="True"/>
-                                                </interactivity:Interaction.Behaviors>
-                                            </Rectangle>
-                                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="{Binding Icon}" FontSize="30" HorizontalAlignment="Center" Foreground="White" Padding="4"/>
-                                            <TextBlock Grid.Row="1" Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"  Foreground="White"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </GridView.ItemTemplate>
-                                <GridView.ItemContainerStyle>
-                                    <Style TargetType="GridViewItem">
-                                        <Setter Property="controls:BladeControl.ToggleBlade" Value="BladeTest2"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                    </Style>
-                                </GridView.ItemContainerStyle>
-                            </GridView>
+                            <Rectangle x:Name="itembg" Height="155" Width="155" Fill="Black" Opacity="0.4" Grid.RowSpan="2">
+                                <interactivity:Interaction.Behaviors>
+                                    <behaviors:Blur x:Name="BlurBehavior"  Value="10" Duration="10" Delay="0" AutomaticallyStart="True"/>
+                                </interactivity:Interaction.Behaviors>
+                            </Rectangle>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="{Binding Icon}" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Padding="4"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"  Foreground="White"/>
                         </Grid>
-                    </controls:Blade.Element>
-                </controls:Blade>
-                <controls:Blade Title="Default blade" 
-                                BladeId="BladeTest1"
-                                IsOpen="False">
-                    <controls:Blade.Element>
-                        <TextBlock HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Text="This is a blade with all settings set to default." />
-                    </controls:Blade.Element>
-                </controls:Blade>
-                <controls:Blade Title="Custom title bar"
-                                BladeId="BladeTest2"
-                                IsOpen="False"
-                                TitleBarBackground="CornflowerBlue"
-                                TitleBarForeground="White">
-                    <controls:Blade.Element>
-                        <TextBlock HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Text="This is a blade with custom titlebar colors." />
-                    </controls:Blade.Element>
-                </controls:Blade>
-                <controls:Blade Title="Custom close button color"
-                                BladeId="BladeTest3"
-                                CloseButtonBackground="Black"
-                                CloseButtonForeground="White"
-                                IsOpen="False">
-                    <controls:Blade.Element>
-                        <TextBlock HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Text="This is a blade with a custom close button color." />
-                    </controls:Blade.Element>
-                </controls:Blade>
-            </controls:BladeControl.Blades>
-        </controls:BladeControl>
+                    </DataTemplate>
+                </controls:AdaptiveGridView.ItemTemplate>
+            </controls:AdaptiveGridView>
+        </Grid>
     </Grid>
 </Page>

@@ -1,5 +1,5 @@
 ﻿using Core.DataModel;
-using Developer_Hub_For_UWP.Pages;
+using WeCode.Pages;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using System.Collections.Generic;
 using System;
@@ -38,11 +38,11 @@ namespace WeCode
 
             fList.Add(new Feature { Icon = "", Name = loader.GetString("UL"), PageType = typeof(URILauncher) });
             fList.Add(new Feature { Icon = "", Name = loader.GetString("SMI"), PageType = typeof(IconBrowser) });
-            fList.Add(new Feature { Icon = "", Name = loader.GetString("AG"), PageType = typeof(AssetsGen) });
-            fList.Add(new Feature { Icon = "", Name = loader.GetString("LBI"), PageType = typeof(BuildInfo) });
-            fList.Add(new Feature { Icon = "", Name = "Device Portal", PageType = typeof(DevicePortal) });
-            fList.Add(new Feature { Icon = "", Name = "Json2Class Converter", PageType = typeof(Json2CS) });
-            fList.Add(new Feature { Icon = "", Name = "Color Converter", PageType = typeof(ColorC) });
+            fList.Add(new Feature { Icon = "", Name = loader.GetString("AG"), PageType = typeof(AssetsGen) });
+            fList.Add(new Feature { Icon = "", Name = "Device Portal(i)", PageType = typeof(DevicePortal) });
+            fList.Add(new Feature { Icon = "", Name = "Json2Class Converter(i)", PageType = typeof(Json2CS) });
+            fList.Add(new Feature { Icon = "", Name = "Color Converter(i)", PageType = typeof(ColorC) });
+            fList.Add(new Feature { Icon = "", Name = "Notification Editor(i)", PageType = typeof(NotificationEd) });
             //vm.BottomItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("Settings"), PageType = typeof(SettingsPage) });
 
             gridView.ItemsSource = fList;
@@ -89,7 +89,7 @@ namespace WeCode
 
         private async void gridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            /*var items = (Feature)e.ClickedItem;
+            var items = (Feature)e.ClickedItem;
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             var currentAV = ApplicationView.GetForCurrentView();
             var newAV = CoreApplication.CreateNewView();
@@ -112,7 +112,7 @@ namespace WeCode
                                     ViewSizePreference.UseMinimum,
                                     currentAV.Id,
                                     ViewSizePreference.UseMinimum);
-                            });*/
+                            });
         }
     }
 }

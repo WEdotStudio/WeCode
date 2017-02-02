@@ -16,7 +16,8 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>WeCode_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>WeCode_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>5363612C9D49443A44A7E13B98C437A7F07ECCBA</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -90,9 +91,6 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="Assets\bg.jpg" />
-    <Content Include="Assets\Data\api.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Data\data.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -114,9 +112,6 @@
     <Compile Include="Pages\ColorC.xaml.cs">
       <DependentUpon>ColorC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Json2CS.xaml.cs">
       <DependentUpon>Json2CS.xaml</DependentUpon>
     </Compile>
@@ -131,9 +126,6 @@
     </Compile>
     <Compile Include="Pages\AssetsGen.xaml.cs">
       <DependentUpon>AssetsGen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\BuildInfo.xaml.cs">
-      <DependentUpon>BuildInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DevicePortal.xaml.cs">
       <DependentUpon>DevicePortal.xaml</DependentUpon>
@@ -150,6 +142,7 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\zh-Hans\Resources.resw" />
     <PRIResource Include="Strings\zh-Hant\Resources.resw" />
+    <None Include="WeCode_StoreKey.pfx" />
     <None Include="WeCode_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +188,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -221,10 +215,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Home.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Json2CS.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -242,10 +232,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\AssetsGen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\BuildInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

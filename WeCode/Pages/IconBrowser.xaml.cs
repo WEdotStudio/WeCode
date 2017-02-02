@@ -9,7 +9,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Developer_Hub_For_UWP.Pages
+namespace WeCode.Pages
 {
     public sealed partial class IconBrowser : Page
     {
@@ -17,7 +17,6 @@ namespace Developer_Hub_For_UWP.Pages
         {
             this.InitializeComponent();
             InitializeList();
-
         }
 
         private void InitializeList()
@@ -30,7 +29,7 @@ namespace Developer_Hub_For_UWP.Pages
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             Character output = e.ClickedItem as Character;
-            AddToHistory(output);
+            //AddToHistory(output);
             var currentAV = ApplicationView.GetForCurrentView();
             var newAV = CoreApplication.CreateNewView();
             await newAV.Dispatcher.RunAsync(
@@ -88,8 +87,6 @@ namespace Developer_Hub_For_UWP.Pages
             }
             streamout.Dispose();
         }
-
-       
 
         private void CmbFontFamily_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {

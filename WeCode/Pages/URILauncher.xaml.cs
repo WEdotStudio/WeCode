@@ -8,7 +8,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Developer_Hub_For_UWP.Pages
+namespace WeCode.Pages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
