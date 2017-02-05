@@ -10,7 +10,10 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer Padding="{x:Bind Frame.Padding, Mode=OneWay}">
             <StackPanel>
-                <TextBlock x:Uid="AG1" Text="Assets Generator" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}" />
+                <Grid>
+                    <Image Height="100" x:Name="bg" Source="ms-appx:///Assets/bg.jpg" Stretch="UniformToFill" HorizontalAlignment="Right"/>
+                    <TextBlock x:Uid="AG1" Text="Assets Generator" Style="{StaticResource TitleTextBlockStyle}" Margin="10" VerticalAlignment="Bottom"/>
+                </Grid>
                 <TextBlock  Margin="5" TextWrapping="Wrap">
                     <Run x:Uid="Note" Text="Note:"/>
                     <LineBreak/>

@@ -1,10 +1,14 @@
 ﻿using Core.DataModel;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Windows.Foundation.Metadata;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -20,12 +24,15 @@ namespace WeCode.Pages
         public URILauncher()
         {
             this.InitializeComponent();
+            InitializeUi();
             _appSettings = ApplicationData.Current.LocalSettings;
             this.Loaded += Page2_Loaded;
         }
 
         private async void Page2_Loaded(object sender, RoutedEventArgs e)
         {
+            bg.Blur(value: 20, duration: 50, delay: 10).Start();
+
             UpdateList();
 
             Uri uri = new Uri("ms-appx:///Assets/Data/uri.csv");
@@ -79,6 +86,26 @@ namespace WeCode.Pages
                 storageStream.Dispose();
             }
 
+        }
+
+        private void InitializeUi()
+        {
+            var applicationView = ApplicationView.GetForCurrentView();
+            var titleBar = applicationView.TitleBar;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveForegroundColor = Colors.White;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonForegroundColor = Colors.White;
+            Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            // If we have a phone contract, hide the status bar
+            if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1, 0))
+            {
+                applicationView.SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
+                var statusBar = StatusBar.GetForCurrentView();
+                statusBar.BackgroundOpacity = 0;
+                statusBar.BackgroundColor = Colors.Black;
+                statusBar.ForegroundColor = Colors.White;
+            }
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

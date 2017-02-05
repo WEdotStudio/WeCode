@@ -39,10 +39,11 @@ namespace WeCode
             fList.Add(new Feature { Icon = "", Name = loader.GetString("UL"), PageType = typeof(URILauncher) });
             fList.Add(new Feature { Icon = "", Name = loader.GetString("SMI"), PageType = typeof(IconBrowser) });
             fList.Add(new Feature { Icon = "", Name = loader.GetString("AG"), PageType = typeof(AssetsGen) });
-            fList.Add(new Feature { Icon = "", Name = "Device Portal(i)", PageType = typeof(DevicePortal) });
-            fList.Add(new Feature { Icon = "", Name = "Json2Class Converter(i)", PageType = typeof(Json2CS) });
-            fList.Add(new Feature { Icon = "", Name = "Color Converter(i)", PageType = typeof(ColorC) });
-            fList.Add(new Feature { Icon = "", Name = "Notification Editor(i)", PageType = typeof(NotificationEd) });
+            //fList.Add(new Feature { Icon = "", Name = "Device Portal(i)", PageType = typeof(DevicePortal) });
+            //fList.Add(new Feature { Icon = "", Name = "Json2Class Converter(i)", PageType = typeof(Json2CS) });
+            //fList.Add(new Feature { Icon = "", Name = "Color Converter(i)", PageType = typeof(ColorC) });
+            //fList.Add(new Feature { Icon = "", Name = "Notification Editor(i)", PageType = typeof(NotificationEd) });
+            fList.Add(new Feature { Icon = "", Name = loader.GetString("Settings"), PageType = typeof(SettingsPage) });
             //vm.BottomItems.Add(new NavigationItem { Icon = "", DisplayName = loader.GetString("Settings"), PageType = typeof(SettingsPage) });
 
             gridView.ItemsSource = fList;

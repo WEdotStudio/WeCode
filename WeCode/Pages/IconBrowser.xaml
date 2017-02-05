@@ -177,7 +177,10 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Uid="SMIt" Text="Segoe MDL2 Assets Icons Browser" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}" Margin="10,10,10,0" />
+        <Grid>
+            <Image Height="100" x:Name="bg" Source="ms-appx:///Assets/bg.jpg" Stretch="UniformToFill" HorizontalAlignment="Right"/>
+            <TextBlock x:Uid="SMIt" Text="Segoe MDL2 Assets Icons Browser" Style="{StaticResource TitleTextBlockStyle}" Margin="10" VerticalAlignment="Bottom"/>
+        </Grid>
         <ComboBox Grid.Row="1" x:Name="CmbFontFamily" x:Uid="CmbFontFamily" HorizontalAlignment="Stretch" SelectionChanged="CmbFontFamily_OnSelectionChanged" SelectedValuePath="Name" VerticalAlignment="Center" PlaceholderText="----Choose a Font----" Style="{StaticResource ComboBoxStyle1}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>

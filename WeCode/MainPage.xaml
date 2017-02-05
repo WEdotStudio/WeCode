@@ -35,7 +35,7 @@
 <Run x:Name="ma" Text=" Microsoft Surface Pro 3"/>
                 </TextBlock>
             </StackPanel>
-            <controls:AdaptiveGridView Name="gridView"
+            <controls:AdaptiveGridView x:Name="gridView"
                                    Grid.Row="1"
                                    OneRowModeEnabled="False"
                                    Width="480"

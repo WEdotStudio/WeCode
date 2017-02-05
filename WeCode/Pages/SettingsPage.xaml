@@ -13,15 +13,18 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Uid="Sett" Text="Settings / About" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}"  Margin="10"/>
-            <StackPanel Grid.Row="2" Margin="10">
+            <Grid>
+                <Image Height="100" x:Name="bg" Source="ms-appx:///Assets/bg.jpg" Stretch="UniformToFill" HorizontalAlignment="Right"/>
+                <TextBlock x:Uid="Sett" Text="Settings / About" Style="{StaticResource TitleTextBlockStyle}" Margin="10" VerticalAlignment="Bottom"/>
+            </Grid>
+            <StackPanel Grid.Row="2" Margin="10"> 
                 <Border Background="Gray" Opacity="0.6" Height="120" Width="120" HorizontalAlignment="Left" Margin="10">
                     <Image Source="../Assets/Square310x310Logo.scale-400.png"/>
                 </Border>
                 
                 <TextBlock FontSize="20">
                     <Run  x:Uid="AppN" Text="WeCode "/>
-                    <Run Text="v 2.5"/>
+                    <Run Text="v 4.0 - Emergency Release"/>
                 </TextBlock>
                 <TextBlock x:Uid="Auth" Text="Author: Patrick Wu" FontSize="20"/>
                 <StackPanel Margin="5" Orientation="Horizontal">
@@ -72,19 +75,6 @@
                             <Hyperlink  NavigateUri="https://github.com/JamesNK/Newtonsoft.Json"><Run Text="GitHub"/></Hyperlink>
                             <Run Text="   "/>
                             <Hyperlink  NavigateUri="https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"><Run Text="License(MIT)"/></Hyperlink>
-                            <LineBreak/>
-                            <LineBreak/>
-                            <Run Text="🐱💻Inside Ten"/>
-                            <LineBreak/>
-                            <Run Text="Made with ♥ by Mehedi Hassan"/>
-                            <LineBreak/>
-                            <Hyperlink  NavigateUri="http://insideten.xyz/"><Run Text="Inside Ten"/></Hyperlink>
-                            <Run Text="   "/>
-                            <Hyperlink  NavigateUri="https://github.com/JamesNK/Newtonsoft.Json"><Run Text="GitHub"/></Hyperlink>
-                            <Run Text="   "/>
-                            <Hyperlink  NavigateUri="https://twitter.com/InsideTen_"><Run Text="Twitter(Inside Ten)"/></Hyperlink>
-                            <Run Text="   "/>
-                            <Hyperlink  NavigateUri="https://twitter.com/mehedih_"><Run Text="Twitter(Mehedi Hassan)"/></Hyperlink>
                                         </TextBlock>
                                     </ScrollViewer>
                                 </Border>
@@ -93,13 +83,13 @@
                     </Button>
                 </StackPanel>
                 <Button x:Uid="AppMore" Content="More Apps From Me" Click="Button_Click_2" Margin="5"/>
-                <TextBlock x:Uid="his" Text="General" FontSize="25"/>
+               <!-- <TextBlock x:Uid="his" Text="General" FontSize="25"/>
                 <ToggleSwitch Grid.Row="1" Margin="5,0" x:Name="om" Header="Offine Mode" Toggled="om_Toggled"/>
                 <ToggleSwitch Grid.Row="1" Margin="5,0" x:Name="txt" Header="Do not Prompt Update Notification" Toggled="txt_Toggled"/>
                 <TextBlock x:Uid="his" Text="History" FontSize="25"/>
                 <CheckBox x:Uid="sma" Margin="5,0" x:Name="sma" Content="Segoe MDL2 Assets" IsChecked="False"/>
                 <CheckBox x:Uid="uri" Margin="5,0" x:Name="urim" Content="URI" IsChecked="False"/>
-                <Button x:Uid="CH" Content="Clear History" Click="Button_Click"/>
+                <Button x:Uid="CH" Content="Clear History" Click="Button_Click"/>-->
             </StackPanel>
         </Grid>
     </ScrollViewer>

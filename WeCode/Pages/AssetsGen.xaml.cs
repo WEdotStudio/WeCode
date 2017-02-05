@@ -7,6 +7,10 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Core;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.UI.ViewManagement;
+using Windows.UI;
+using Windows.Foundation.Metadata;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 
 namespace WeCode.Pages
 {
@@ -23,11 +27,35 @@ namespace WeCode.Pages
         public AssetsGen()
         {
             this.InitializeComponent();
-
+            Loaded += AssetsGen_Loaded;
+            InitializeUi();
             s44L.Checked += s44L_Checked;
             s44L.Unchecked += s44L_Unchecked;
         }
 
+        private void AssetsGen_Loaded(object sender, RoutedEventArgs e)
+        {
+            bg.Blur(value: 20, duration: 50, delay: 10).Start();
+        }
+        private void InitializeUi()
+        {
+            var applicationView = ApplicationView.GetForCurrentView();
+            var titleBar = applicationView.TitleBar;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveForegroundColor = Colors.White;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonForegroundColor = Colors.White;
+            Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            // If we have a phone contract, hide the status bar
+            if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1, 0))
+            {
+                applicationView.SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
+                var statusBar = StatusBar.GetForCurrentView();
+                statusBar.BackgroundOpacity = 0;
+                statusBar.BackgroundColor = Colors.Black;
+                statusBar.ForegroundColor = Colors.White;
+            }
+        }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             StoredFile1 = null;

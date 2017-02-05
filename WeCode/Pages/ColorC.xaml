@@ -5,9 +5,19 @@
     xmlns:local="using:WeCode.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    xmlns:sys="using:System">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--<TextBlock>Red:</TextBlock>
+        <Slider x:Name="RedSlider" Grid.Column="1" Minimum="0" Maximum="255" Value="50" Width="180" />
+        <TextBlock Grid.Row="1">Green:</TextBlock>
+        <Slider x:Name="GreenSlider" Grid.Column="1" Grid.Row="1" Minimum="0" Maximum="255" Value="100" Width="180"/>
+        <TextBlock Grid.Row="2">Blue:</TextBlock>
+        <Slider x:Name="BlueSlider" Grid.Column="1" Grid.Row="2" Minimum="0" Maximum="255" Value="150" Width="180"/>
+        <Rectangle  Fill="{x:Bind MakeColor(RedSlider.Value, GreenSlider.Value, BlueSlider.Value), Mode=OneWay}" Grid.Column="2" Grid.RowSpan="2" Width="50" Height="50" Margin="5,0" />-->
+        
 
-    </Grid>
+      
+    </StackPanel>
 </Page>

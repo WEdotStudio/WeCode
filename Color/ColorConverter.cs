@@ -1,18 +1,25 @@
 ﻿using System;
-using static Color.Color;
+using Windows.UI.Xaml.Media;
+using static Color.ColorStruct;
 
 namespace Color
 {
     /// <summary>
     /// A Color Converter Class 
     /// </summary>
-    class ColorConverter
+    public class ColorConverter
     {
         #region RGB Conversions
+
+        public static SolidColorBrush RGBtoBrush(double red, double green, double blue)
+        {
+            return new SolidColorBrush(Windows.UI.Color.FromArgb(255, (byte)red, (byte)green, (byte)blue));
+        }
+
         /// <summary>
         /// Converts RGB to HSB.
         /// </summary>
-        public static HSB RGBtoHSB(int red, int green, int blue)
+        public static HSB RGBtoHSB(double red, double green, double blue)
         {
             // normalize red, green and blue values
             double r = ((double)red / 255.0);
@@ -52,7 +59,7 @@ namespace Color
         /// <param name="red">Red value, must be in [0,255].</param>
         /// <param name="green">Green value, must be in [0,255].</param>
         /// <param name="blue">Blue value, must be in [0,255].</param>
-        public static HSL RGBtoHSL(int red, int green, int blue)
+        public static HSL RGBtoHSL(double red, double green, double blue)
         {
             double h = 0, s = 0, l = 0;
             // normalize red, green, blue values
@@ -115,7 +122,7 @@ namespace Color
         /// <param name="red">Red vaue must be in [0, 255]. </param>
         /// <param name="green">Green vaue must be in [0, 255].</param>
         /// <param name="blue">Blue vaue must be in [0, 255].</param>
-        public static CMYK RGBtoCMYK(int red, int green, int blue)
+        public static CMYK RGBtoCMYK(double red, double green, double blue)
         {
             // normalizes red, green, blue values
             double c = (double)(255 - red) / 255;
@@ -140,7 +147,7 @@ namespace Color
         /// <param name="red">Red must be in [0, 255].</param>
         /// <param name="green">Green must be in [0, 255].</param>
         /// <param name="blue">Blue must be in [0, 255].</param>
-        public static YUV RGBtoYUV(int red, int green, int blue)
+        public static YUV RGBtoYUV(double red, double green, double blue)
         {
             YUV yuv = new YUV();
             // normalizes red, green, blue values
@@ -161,7 +168,7 @@ namespace Color
         /// <param name="r">Red value.</param>
         /// <param name="g">Green value.</param>
         /// <param name="b">Blue value.</param>
-        public static string RGBToHex(int r, int g, int b)
+        public static string RGBToHex(double r, double g, double b)
         {
             return String.Format("#{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
         }
@@ -169,7 +176,7 @@ namespace Color
         /// <summary>
         /// Converts RGB to CIE XYZ (CIE 1931 color space)
         /// </summary>
-        public static CIEXYZ RGBtoXYZ(int red, int green, int blue)
+        public static CIEXYZ RGBtoXYZ(double red, double green, double blue)
         {
             // normalize red, green, blue values
             double rLinear = (double)red / 255.0;
@@ -195,7 +202,7 @@ namespace Color
         /// <summary>
         /// Converts RGB to CIELab.
         /// </summary>
-        public static CIELab RGBtoLab(int red, int green, int blue)
+        public static CIELab RGBtoLab(double red, double green, double blue)
         {
             return XYZtoLab(RGBtoXYZ(red, green, blue));
         }
@@ -267,9 +274,9 @@ namespace Color
             }
 
             return new RGB(
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}", r * 255.0))),
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}", g * 255.0))),
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}", b_rgb * 255.0)))
+                Double.Parse(String.Format("{0:0.00}", r * 255.0)),
+                Double.Parse(String.Format("{0:0.00}", g * 255.0)),
+                Double.Parse(String.Format("{0:0.00}", b_rgb * 255.0))
             );
         }
 
@@ -317,12 +324,12 @@ namespace Color
             {
                 // achromatic color (gray scale)
                 return new RGB(
-                    Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                        l * 255.0))),
-                    Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                        l * 255.0))),
-                    Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                        l * 255.0)))
+                     Double.Parse(String.Format("{0:0.00}",
+                        l * 255.0)),
+                     Double.Parse(String.Format("{0:0.00}",
+                        l * 255.0)),
+                     Double.Parse(String.Format("{0:0.00}",
+                        l * 255.0))
                     );
             }
             else
@@ -357,12 +364,12 @@ namespace Color
                 }
 
                 return new RGB(
-                    Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                        T[0] * 255.0))),
-                    Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                        T[1] * 255.0))),
-                    Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                        T[2] * 255.0)))
+                     Double.Parse(String.Format("{0:0.00}",
+                        T[0] * 255.0)),
+                     Double.Parse(String.Format("{0:0.00}",
+                        T[1] * 255.0)),
+                     Double.Parse(String.Format("{0:0.00}",
+                        T[2] * 255.0))
                     );
             }
         }
@@ -404,9 +411,9 @@ namespace Color
         /// </summary>
         public static RGB CMYKtoRGB(double c, double m, double y, double k)
         {
-            int red = Convert.ToInt32((1 - c) * (1 - k) * 255.0);
-            int green = Convert.ToInt32((1 - m) * (1 - k) * 255.0);
-            int blue = Convert.ToInt32((1 - y) * (1 - k) * 255.0);
+            double red =  (1 - c) * (1 - k) * 255.0;
+            double green =  (1 - m) * (1 - k) * 255.0;
+            double blue =  (1 - y) * (1 - k) * 255.0;
 
             return new RGB(red, green, blue);
         }
@@ -453,10 +460,10 @@ namespace Color
         {
             RGB rgb = new RGB();
 
-            rgb.Red = Convert.ToInt32((y + 1.139837398373983740 * v) * 255);
-            rgb.Green = Convert.ToInt32((
-                y - 0.3946517043589703515 * u - 0.5805986066674976801 * v) * 255);
-            rgb.Blue = Convert.ToInt32((y + 2.032110091743119266 * u) * 255);
+            rgb.Red =  (y + 1.139837398373983740 * v) * 255;
+            rgb.Green =  (
+                y - 0.3946517043589703515 * u - 0.5805986066674976801 * v) * 255;
+            rgb.Blue =  (y + 2.032110091743119266 * u) * 255;
 
             return rgb;
         }
@@ -519,12 +526,12 @@ namespace Color
             }
 
             return new RGB(
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                    Clinear[0] * 255.0))),
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                    Clinear[1] * 255.0))),
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                    Clinear[2] * 255.0)))
+                 Double.Parse(String.Format("{0:0.00}",
+                    Clinear[0] * 255.0)),
+                 Double.Parse(String.Format("{0:0.00}",
+                    Clinear[1] * 255.0)),
+                 Double.Parse(String.Format("{0:0.00}",
+                    Clinear[2] * 255.0))
                 );
         }
 
@@ -547,12 +554,12 @@ namespace Color
             }
 
             return new RGB(
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                    Clinear[0] * 255.0))),
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                    Clinear[1] * 255.0))),
-                Convert.ToInt32(Double.Parse(String.Format("{0:0.00}",
-                    Clinear[2] * 255.0)))
+                 Double.Parse(String.Format("{0:0.00}",
+                    Clinear[0] * 255.0)),
+                 Double.Parse(String.Format("{0:0.00}",
+                    Clinear[1] * 255.0)),
+                 Double.Parse(String.Format("{0:0.00}",
+                    Clinear[2] * 255.0))
                 );
         }
 

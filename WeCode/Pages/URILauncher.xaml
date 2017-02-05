@@ -36,15 +36,16 @@
         <Grid>
             
         <StackPanel>
-            <Grid Height="45">
+            <Grid Height="100">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Uid="URIL" Text="URI Launcher" Style="{StaticResource TitleTextBlockStyle}" DataContext="{x:Bind Frame}" Visibility="{Binding PageTitleVisibility}"  Margin="5"/>
-                    <Button x:Uid="Btn1" Grid.Column="1" Width="45" Height="45" FontFamily="Segoe MDL2 Assets" Content="&#xE8FD;" Click="D_Action" Background="Transparent" HorizontalAlignment="Right"/>
-                    <Button x:Uid="Btn2" Grid.Column="2" x:Name="HamburgerButton1" Width="45" Height="45" Background="Transparent" Click="HamburgerButton_Click" HorizontalAlignment="Right">
+                    <Image Height="100" x:Name="bg" Source="ms-appx:///Assets/bg.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Grid.ColumnSpan="3"/>
+                        <TextBlock x:Uid="URIL" Text="URI Launcher" Style="{StaticResource TitleTextBlockStyle}" Margin="10" VerticalAlignment="Bottom"/>
+                        <Button x:Uid="Btn1" Grid.Column="1" Width="45" Height="45" FontFamily="Segoe MDL2 Assets" Content="&#xE8FD;" Click="D_Action" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                    <Button x:Uid="Btn2" Grid.Column="2" x:Name="HamburgerButton1" Width="45" Height="45" Background="Transparent" Click="HamburgerButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <Button.Content>
                             <Image Source="/Assets/h.png"/>
                         </Button.Content>

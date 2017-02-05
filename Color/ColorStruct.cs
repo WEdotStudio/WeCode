@@ -9,7 +9,7 @@ namespace Color
     /// <summary>
     /// Color Structure Class
     /// </summary>
-    class Color
+    public class ColorStruct
     {
         /// <summary>
         /// RGB structure.
@@ -21,9 +21,9 @@ namespace Color
             /// </summary>
             public static readonly RGB Empty = new RGB();
 
-            private int red;
-            private int green;
-            private int blue;
+            private double red;
+            private double green;
+            private double blue;
 
             public static bool operator ==(RGB item1, RGB item2)
             {
@@ -46,7 +46,7 @@ namespace Color
             /// <summary>
             /// Gets or sets red value.
             /// </summary>
-            public int Red
+            public double Red
             {
                 get
                 {
@@ -61,7 +61,7 @@ namespace Color
             /// <summary>
             /// Gets or sets red value.
             /// </summary>
-            public int Green
+            public double Green
             {
                 get
                 {
@@ -76,7 +76,7 @@ namespace Color
             /// <summary>
             /// Gets or sets red value.
             /// </summary>
-            public int Blue
+            public double Blue
             {
                 get
                 {
@@ -88,7 +88,7 @@ namespace Color
                 }
             }
 
-            public RGB(int R, int G, int B)
+            public RGB(double R, double G, double B)
             {
                 this.red = (R > 255) ? 255 : ((R < 0) ? 0 : R);
                 this.green = (G > 255) ? 255 : ((G < 0) ? 0 : G);
